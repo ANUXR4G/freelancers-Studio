@@ -180,36 +180,6 @@ export default function PortfolioGrid() {
 
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            <div className="text-2xl font-bold tracking-tight">
-              <span className="bg-gradient-to-r from-[#ed356d] to-purple-600 bg-clip-text text-transparent">
-                Liko Studio
-              </span>
-            </div>
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="#" className="text-gray-700 hover:text-[#ed356d] transition-colors text-sm font-medium">
-                Home
-              </a>
-              <a href="#" className="text-gray-700 hover:text-[#ed356d] transition-colors text-sm font-medium">
-                About
-              </a>
-              <a href="#" className="text-gray-700 hover:text-[#ed356d] transition-colors text-sm font-medium">
-                Portfolio
-              </a>
-              <a href="#" className="text-gray-700 hover:text-[#ed356d] transition-colors text-sm font-medium">
-                Contact
-              </a>
-            </nav>
-          </div>
-        </div>
-      </header>
-
-      {/* Hero Section */}
-
-
       <section className="pb-20 pt-20 px-6 lg:px-8">
         <div className="max-w-[1600px] mx-auto">
           <motion.div 

@@ -85,7 +85,7 @@ export const QUESTIONS = [
       ),
     },
     link: {
-      url: '/offer',
+      url: '/ofen/our-portfoliofer',
       text: {
         en: 'Our portfolio',
         fr: 'Nos offres',
@@ -118,7 +118,7 @@ export const QUESTIONS = [
       ),
     },
     link: {
-      url: '/offer',
+      url: '/en/our-portfolio',
       text: {
         en: 'Our portfolio',
         fr: 'Nos offres',

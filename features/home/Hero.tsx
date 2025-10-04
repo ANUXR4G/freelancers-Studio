@@ -255,7 +255,7 @@ const Hero = () => {
         </Button>
         <Button 
           className="bg-gradient-to-r from-[#ed356d] to-[#c92a5a] hover:bg-gradient-to-br text-white" 
-          href={getInternalPath('/offer')} 
+          href={getInternalPath('/en/our-portfolio')} 
           scroll={false}
         >
           {isFrench ? <span>OFFRES</span> : <span>portfolio</span>}

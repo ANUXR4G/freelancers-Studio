@@ -9,11 +9,17 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  transpilePackages: [
-    'gsap', 
-    '@gsap/react',
-    // Add any other packages causing import errors here
-  ],
+  transpilePackages: ['gsap', '@gsap/react'],
+  
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/en',
+        permanent: true,
+      },
+    ];
+  },
 }
 
 export default nextConfig
