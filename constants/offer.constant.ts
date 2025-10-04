@@ -1,0 +1,172 @@
+import { CONTACT_TYPE_VALUES, OFFER_TYPE } from '@/types';
+
+export const portfolio = [
+  {
+    type: OFFER_TYPE.LANDING,
+    title: {
+      en: 'PREMIUM LANDING PAGE',
+      fr: 'LANDING PAGE PREMIUM',
+    },
+    options: [
+      {
+        title: {
+          en: '1 page',
+          fr: '1 page',
+        },
+      },
+      {
+        title: {
+          en: 'Elegant animations on every section',
+          fr: 'Animations élégantes sur chaque section',
+        },
+      },
+      {
+        title: {
+          en: '100% custom design',
+          fr: 'Design 100% sur-mesure',
+        },
+      },
+      {
+        title: {
+          en: 'Responsive design (mobile)',
+          fr: 'Responsive design (mobile)',
+        },
+      },
+      {
+        title: {
+          en: 'Technical SEO',
+          fr: 'SEO technique',
+        },
+      },
+      {
+        title: {
+          en: 'Available options: simple CMS, multilingual, etc...',
+          fr: 'Options possibles : CMS simple, multilingue, etc...',
+        },
+      },
+    ],
+    delivery: {
+      title: {
+        en: 'Fast delivery',
+        fr: 'Livraison rapide',
+      },
+      description: {
+        en: '3 to 4 weeks',
+        fr: '3 à 4 semaines',
+      },
+    },
+    href: '/en/contact?type=' + CONTACT_TYPE_VALUES.LANDING,
+  },
+  {
+    type: OFFER_TYPE.SIMPLE,
+    title: {
+      en: 'SIGNATURE WEBSITE',
+      fr: 'SITE SIGNATURE',
+    },
+    options: [
+      {
+        title: {
+          en: '3 to 6 pages',
+          fr: 'De 3 à 6 pages',
+        },
+      },
+      {
+        title: {
+          en: 'Elegant animations on every page',
+          fr: 'Animations élégantes sur chaque page',
+        },
+      },
+      {
+        title: {
+          en: '100% custom design',
+          fr: 'Design 100% sur-mesure',
+        },
+      },
+      {
+        title: {
+          en: 'Responsive design (mobile)',
+          fr: 'Responsive design (mobile)',
+        },
+      },
+      {
+        title: {
+          en: 'Technical SEO',
+          fr: 'SEO technique',
+        },
+      },
+      {
+        title: {
+          en: 'Available options: simple CMS, multilingual, blog, etc...',
+          fr: 'Options possibles : CMS simple, multilingue, blog, etc...',
+        },
+      },
+    ],
+    delivery: {
+      title: {
+        en: 'Delivery',
+        fr: 'Livraison',
+      },
+      description: {
+        en: '6 to 8 weeks',
+        fr: '6 à 8 semaines',
+      },
+    },
+    href: '/en/contact?type=' + CONTACT_TYPE_VALUES.SIMPLE,
+  },
+  {
+    type: OFFER_TYPE.CUSTOM,
+    title: {
+      en: 'CUSTOM WEBSITE',
+      fr: 'SITE SUR-MESURE',
+    },
+    options: [
+      {
+        title: {
+          en: 'Unlimited pages',
+          fr: 'Nombre de pages illimité',
+        },
+      },
+      {
+        title: {
+          en: 'Immersive animations',
+          fr: 'Animations immersives',
+        },
+      },
+      {
+        title: {
+          en: '100% custom design',
+          fr: 'Design 100% sur-mesure',
+        },
+      },
+      {
+        title: {
+          en: 'Responsive design (mobile)',
+          fr: 'Responsive design (mobile)',
+        },
+      },
+      {
+        title: {
+          en: 'Technical SEO',
+          fr: 'SEO technique',
+        },
+      },
+      {
+        title: {
+          en: 'Available options: simple CMS, multilingual, blog, etc...',
+          fr: 'Options possibles : CMS simple, multilingue, blog, etc...',
+        },
+      },
+    ],
+    delivery: {
+      title: {
+        en: 'Delivery',
+        fr: 'Livraison',
+      },
+      description: {
+        en: '6+ weeks',
+        fr: '+ 6 semaines',
+      },
+    },
+    href: '/en/contact?type=' + CONTACT_TYPE_VALUES.CUSTOM,
+  },
+];
