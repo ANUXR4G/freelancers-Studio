@@ -9,6 +9,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  transpilePackages: [
+    'gsap', 
+    '@gsap/react',
+    // Add any other packages causing import errors here
+  ],
 }
 
 export default nextConfig
