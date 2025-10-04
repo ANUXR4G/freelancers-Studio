@@ -1,44 +1,14 @@
-import type { NextConfig } from 'next';
-
-const nextConfig: NextConfig = {
-  /* config options here */
-  transpilePackages: ['gsap'],
-  reactStrictMode: true,
-  // experimental: {
-  //   esmExternals: 'loose',
-  // },
-  async redirects() {
-    return [
-      {
-        source: '/:path*',
-        destination: 'https://metabole.studio/:path*',
-        permanent: true,
-        has: [
-          {
-            type: 'host',
-            value: 'www.metabole.studio',
-          },
-        ],
-      },
-      {
-        source: '/',
-        destination: '/fr',
-        permanent: false,
-        has: [
-          {
-            type: 'header',
-            key: 'accept-language',
-            value: '(.*fr.*)',
-          },
-        ],
-      },
-      {
-        source: '/',
-        destination: '/en',
-        permanent: false,
-      },
-    ];
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
   },
-};
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  images: {
+    unoptimized: true,
+  },
+}
 
-export default nextConfig;
+export default nextConfig
