@@ -26,7 +26,6 @@ export default function GalleryOne() {
       <style jsx>{`
         .gallery-section {
           display: flex;
-          position: relative;
           align-items: center;
           justify-content: center;
           min-height: 50vh;
@@ -34,9 +33,8 @@ export default function GalleryOne() {
         }
         .banner-img {
           display: block;
-          width: 220px;
+          width: 160px;
           height: 120px;
-          margin: 0 36px;
           object-fit: contain;
           border-radius: 10px;
           background: #fff;
@@ -48,9 +46,8 @@ export default function GalleryOne() {
         }
         @media (max-width: 768px) {
           .banner-img {
-            width: 140px;
-            height: 80px;
-            margin: 0 16px;
+            width: 100px;
+            height: 60px;
           }
         }
       `}</style>
@@ -58,15 +55,16 @@ export default function GalleryOne() {
       <div className="gallery-section">
         <Marquee gradient={false} pauseOnHover={true} speed={60}>
           {gallery_images.map((img, idx) => (
-            <Image
-              alt={`Gallery image ${idx + 1}`}
-              key={idx}
-              src={img}
-              width={160}
-              height={120}
-              className="banner-img px-4"
-              priority={idx < 3}
-            />
+            <div key={idx} className="px-6 md:px-6 px-3">
+              <Image
+                alt={`Gallery image ${idx + 1}`}
+                src={img}
+                width={160}
+                height={120}
+                className="banner-img"
+                priority={idx < 3}
+              />
+            </div>
           ))}
         </Marquee>
       </div>
