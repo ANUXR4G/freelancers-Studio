@@ -88,23 +88,23 @@ export default function LetsTalk() {
       <div className="px-5 pb-5 md:px-8">
         <div className="relative z-10 overflow-hidden rounded-3xl bg-black px-4 pt-[150px] pb-[80px] md:px-8 md:pt-[200px] md:pb-[120px]">
           {/* Lamp Effect - Wide Downward Glow - Opens on view */}
-          <div className="absolute top-0 left-0 right-0 h-[400px] pointer-events-none overflow-visible">
+          <div className="pointer-events-none absolute top-0 right-0 left-0 h-[400px] overflow-visible">
             {/* Top light source line */}
             <motion.div
+              className="absolute top-8 left-1/2 h-[3px] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#ed356d] to-transparent shadow-[0_0_30px_rgba(237,53,109,1)]"
               initial={{ width: '0%', opacity: 0 }}
-              whileInView={{ width: '70%', opacity: 1 }}
-              viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 1, ease: 'easeOut' }}
-              className="absolute top-8 left-1/2 -translate-x-1/2 h-[3px] bg-gradient-to-r from-transparent via-[#ed356d] to-transparent shadow-[0_0_30px_rgba(237,53,109,1)]"
+              viewport={{ once: true }}
+              whileInView={{ width: '70%', opacity: 1 }}
             />
 
             {/* Wide radial glow spreading downward */}
             <motion.div
+              className="absolute top-8 left-1/2 h-[400px] w-[800px] -translate-x-1/2"
               initial={{ opacity: 0, scale: 0.3 }}
-              whileInView={{ opacity: 0.8, scale: 1 }}
-              viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 1.2, ease: 'easeOut' }}
-              className="absolute top-8 left-1/2 -translate-x-1/2 w-[800px] h-[400px]"
+              viewport={{ once: true }}
+              whileInView={{ opacity: 0.8, scale: 1 }}
               style={{
                 background:
                   'radial-gradient(ellipse at top, rgba(237,53,109,0.6) 0%, rgba(237,53,109,0.3) 40%, transparent 70%)',
@@ -113,11 +113,11 @@ export default function LetsTalk() {
 
             {/* Secondary wider glow layer */}
             <motion.div
+              className="absolute top-8 left-1/2 h-[500px] w-[1000px] -translate-x-1/2"
               initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 0.5, scale: 1 }}
-              viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 1.5, ease: 'easeOut' }}
-              className="absolute top-8 left-1/2 -translate-x-1/2 w-[1000px] h-[500px]"
+              viewport={{ once: true }}
+              whileInView={{ opacity: 0.5, scale: 1 }}
               style={{
                 background:
                   'radial-gradient(ellipse at top, rgba(237,53,109,0.4) 0%, rgba(237,53,109,0.15) 30%, transparent 60%)',
@@ -126,20 +126,20 @@ export default function LetsTalk() {
 
             {/* Bright center light source */}
             <motion.div
+              className="absolute top-6 left-1/2 h-[80px] w-[300px] -translate-x-1/2 rounded-full bg-[#ed356d] blur-3xl"
               initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
-              className="absolute top-6 left-1/2 -translate-x-1/2 w-[300px] h-[80px] bg-[#ed356d] rounded-full blur-3xl"
+              viewport={{ once: true }}
+              whileInView={{ scale: 1, opacity: 1 }}
             />
 
             {/* Additional top glow */}
             <motion.div
+              className="absolute top-4 left-1/2 h-[60px] w-[200px] -translate-x-1/2 rounded-full bg-[#ed356d] blur-2xl"
               initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 0.9 }}
-              viewport={{ once: true }}
               transition={{ delay: 0.25, duration: 0.8, ease: 'easeOut' }}
-              className="absolute top-4 left-1/2 -translate-x-1/2 w-[200px] h-[60px] bg-[#ed356d] rounded-full blur-2xl"
+              viewport={{ once: true }}
+              whileInView={{ scale: 1, opacity: 0.9 }}
             />
           </div>
 
@@ -148,11 +148,7 @@ export default function LetsTalk() {
               <div className="relative flex flex-col items-center justify-center text-center">
                 {/* CTA Image - Top Right */}
                 <div className="absolute -top-20 right-0 h-32 w-32 opacity-30 md:-top-32 md:h-48 md:w-48 md:opacity-40 lg:h-56 lg:w-56">
-                  <Image
-                    alt="cta decoration"
-                    className="h-full w-full object-contain"
-                    src={cta}
-                  />
+                  <Image alt="cta decoration" className="h-full w-full object-contain" src={cta} />
                 </div>
 
                 <div className="mb-12">

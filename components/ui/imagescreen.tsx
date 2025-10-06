@@ -5,13 +5,20 @@ import Image from 'next/image';
 import Marquee from 'react-fast-marquee';
 
 // Images
-import g_1 from '../../public/gallery/gal-1.jpg';
-import g_2 from '../../public/gallery/gal-2.jpg';
-import g_3 from '../../public/gallery/gal-3.jpg';
-import g_4 from '../../public/gallery/gal-4.jpg';
-import g_5 from '../../public/gallery/gal-5.jpg';
+import g_1 from '../../public/logos/1.png';
+import g_2 from '../../public/logos/2.png';
+import g_3 from '../../public/logos/3.png';
+import g_4 from '../../public/logos/4.png';
+import g_5 from '../../public/logos/5.png';
+import g_6 from '../../public/logos/6.png';
+import g_7 from '../../public/logos/7.png';
+import g_8 from '../../public/logos/8.png';
+import g_9 from '../../public/logos/9.png';
+import g_10 from '../../public/logos/10.png';
+import g_11 from '../../public/logos/11.png';
+import g_12 from '../../public/logos/12.png';
 
-const gallery_images = [g_1, g_2, g_3, g_4, g_5, g_1, g_2, g_3];
+const gallery_images = [g_1, g_2, g_3, g_4, g_5, g_6, g_7, g_8, g_9, g_10, g_11, g_12]; // <-- Add image here
 
 export default function GalleryOne() {
   return (

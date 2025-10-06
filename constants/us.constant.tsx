@@ -30,7 +30,7 @@ export const TEAM_MEMBERS = [
           <br />
           <br />
           <span>
-          My approach ? Mixing creative boldness and strategy to create memorable experiences.
+            My approach ? Mixing creative boldness and strategy to create memorable experiences.
           </span>
         </>
       ),
@@ -38,5 +38,5 @@ export const TEAM_MEMBERS = [
     image: '/images/shubham.PNG',
     website: 'https://matteocourquin.com',
     alt: 'Matteo COURQUIN',
-  }
+  },
 ];
