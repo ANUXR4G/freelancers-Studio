@@ -3,34 +3,9 @@ import React from 'react';
 import Image from 'next/image';
 import cta from '../../public/cta-1.png';
 import Link from 'next/link';
-import FloatingHalo from '../shared/FloatingHalo';
-import { useRef } from 'react';
-import { useMousePosition } from '@/hooks/useMousePosition';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
+import { motion } from 'motion/react';
 
 export default function LetsTalk() {
-  const wrapperRef = useRef(null);
-  const floatingHaloRef = useRef<HTMLDivElement>(null);
-  const { x, y } = useMousePosition(wrapperRef);
-  const { contextSafe } = useGSAP();
-
-  const resetHaloPosition = contextSafe(() => {
-    gsap.to(floatingHaloRef.current, {
-      x: 0,
-      y: 0,
-      duration: 3,
-    });
-  });
-
-  const moveHalo = contextSafe(() => {
-    gsap.to(floatingHaloRef.current, {
-      x: x,
-      y: y,
-      duration: 2,
-    });
-  });
-
   return (
     <>
       <style global jsx>{`
@@ -88,7 +63,7 @@ export default function LetsTalk() {
             color: #ffffff;
           }
           100% {
-            background: linear-gradient(to right, #fb923c, #ec4899, #9333ea);
+            background: linear-gradient(to right, #ed356d, #ec4899, #9333ea);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -111,23 +86,75 @@ export default function LetsTalk() {
       `}</style>
 
       <div className="px-5 pb-5 md:px-8">
-        <div
-          ref={wrapperRef}
-          className="relative z-10 overflow-hidden rounded-3xl bg-black px-4 pt-[80px] pb-[80px] md:px-8 md:pt-[120px] md:pb-[120px]"
-          onMouseLeave={resetHaloPosition}
-          onMouseMove={moveHalo}
-        >
-          {/* Floating Halo - same as footer */}
-          <FloatingHalo
-            ref={floatingHaloRef}
-            className="-z-10 h-[100vw] w-[100vw] opacity-30"
-            from="#ed356d"
-            to="#141418"
-          />
+        <div className="relative z-10 overflow-hidden rounded-3xl bg-black px-4 pt-[150px] pb-[80px] md:px-8 md:pt-[200px] md:pb-[120px]">
+          {/* Lamp Effect - Wide Downward Glow - Opens on view */}
+          <div className="absolute top-0 left-0 right-0 h-[400px] pointer-events-none overflow-visible">
+            {/* Top light source line */}
+            <motion.div
+              initial={{ width: '0%', opacity: 0 }}
+              whileInView={{ width: '70%', opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 1, ease: 'easeOut' }}
+              className="absolute top-8 left-1/2 -translate-x-1/2 h-[3px] bg-gradient-to-r from-transparent via-[#ed356d] to-transparent shadow-[0_0_30px_rgba(237,53,109,1)]"
+            />
+
+            {/* Wide radial glow spreading downward */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.3 }}
+              whileInView={{ opacity: 0.8, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 1.2, ease: 'easeOut' }}
+              className="absolute top-8 left-1/2 -translate-x-1/2 w-[800px] h-[400px]"
+              style={{
+                background:
+                  'radial-gradient(ellipse at top, rgba(237,53,109,0.6) 0%, rgba(237,53,109,0.3) 40%, transparent 70%)',
+              }}
+            />
+
+            {/* Secondary wider glow layer */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 0.5, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 1.5, ease: 'easeOut' }}
+              className="absolute top-8 left-1/2 -translate-x-1/2 w-[1000px] h-[500px]"
+              style={{
+                background:
+                  'radial-gradient(ellipse at top, rgba(237,53,109,0.4) 0%, rgba(237,53,109,0.15) 30%, transparent 60%)',
+              }}
+            />
+
+            {/* Bright center light source */}
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
+              className="absolute top-6 left-1/2 -translate-x-1/2 w-[300px] h-[80px] bg-[#ed356d] rounded-full blur-3xl"
+            />
+
+            {/* Additional top glow */}
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 0.9 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.25, duration: 0.8, ease: 'easeOut' }}
+              className="absolute top-4 left-1/2 -translate-x-1/2 w-[200px] h-[60px] bg-[#ed356d] rounded-full blur-2xl"
+            />
+          </div>
 
           <div className="relative z-10 container mx-auto px-4">
             <div className="w-full">
-              <div className="relative flex flex-col items-start justify-start">
+              <div className="relative flex flex-col items-center justify-center text-center">
+                {/* CTA Image - Top Right */}
+                <div className="absolute -top-20 right-0 h-32 w-32 opacity-30 md:-top-32 md:h-48 md:w-48 md:opacity-40 lg:h-56 lg:w-56">
+                  <Image
+                    alt="cta decoration"
+                    className="h-full w-full object-contain"
+                    src={cta}
+                  />
+                </div>
+
                 <div className="mb-12">
                   <h4 className="text-6xl leading-tight font-bold md:text-7xl lg:text-9xl">
                     <span className="animate-heading-1 animate-color">Let's talk</span>
@@ -189,10 +216,6 @@ export default function LetsTalk() {
                       </defs>
                     </svg>
                   </Link>
-                </div>
-
-                <div className="absolute top-0 right-0 h-48 w-48 opacity-20 md:h-64 md:w-64">
-                  <Image alt="cta-img" className="h-full w-full object-contain" src={cta} />
                 </div>
               </div>
             </div>

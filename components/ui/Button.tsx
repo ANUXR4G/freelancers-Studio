@@ -19,6 +19,8 @@ interface BaseButtonProps {
   isDark?: boolean;
   disabled?: boolean;
   isResizable?: boolean;
+  withBorder?: boolean;
+  borderColors?: [string, string, string];
   onClick?: () => void;
 }
 
@@ -62,6 +64,8 @@ const Button = forwardRef<HTMLDivElement, ButtonProps>(
       className,
       disabled = false,
       isResizable = false,
+      withBorder = false,
+      borderColors = ['#E2CBFF', '#393BB2', '#E2CBFF'],
       ...props
     },
     ref,
@@ -276,6 +280,47 @@ const Button = forwardRef<HTMLDivElement, ButtonProps>(
       );
     }
 
+    // With Border version - using the exact pattern from the original
+    if (withBorder) {
+      return (
+        <>
+          <DynamicElement
+            ref={ref}
+            className={clsx(
+              'label relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50',
+              disabled ? 'cursor-default! opacity-70' : 'cursor-pointer',
+              className,
+            )}
+            {...props}
+            disabled={disabled}
+            href={href}
+            target={target}
+            onMouseMove={(e) => !disabled && useMagnet(e, 0.8)}
+            onMouseOut={(e) => !disabled && useResetMagnet(e)}
+          >
+            <span 
+              className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite]"
+              style={{
+                background: `conic-gradient(from 90deg at 50% 50%, ${borderColors[0]} 0%, ${borderColors[1]} 50%, ${borderColors[2]} 100%)`
+              }}
+            />
+            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl uppercase">
+              {children}
+            </span>
+          </DynamicElement>
+          {isResizable && (
+            <div
+              ref={hiddenButtonRef}
+              className="label pointer-events-none invisible fixed top-0 left-0 -z-10 h-full w-fit items-center justify-center px-6 whitespace-nowrap uppercase opacity-0"
+            >
+              {children}
+            </div>
+          )}
+        </>
+      );
+    }
+
+    // Original GSAP animated version
     return (
       <>
         <DynamicElement
@@ -296,8 +341,8 @@ const Button = forwardRef<HTMLDivElement, ButtonProps>(
           target={target}
           onMouseEnter={() => !disabled && showBackground()}
           onMouseLeave={() => !disabled && hideBackground()}
-          onMouseMove={(e) => useMagnet(e, 0.8)}
-          onMouseOut={(e) => useResetMagnet(e)}
+          onMouseMove={(e) => !disabled && useMagnet(e, 0.8)}
+          onMouseOut={(e) => !disabled && useResetMagnet(e)}
         >
           <div
             ref={backgroudButtonRef}
@@ -310,8 +355,8 @@ const Button = forwardRef<HTMLDivElement, ButtonProps>(
           <div
             ref={buttonRef}
             className="z-20 flex h-full w-full items-center bg-[#ed356d] text-[17px] text-white"
-            onMouseMove={(e) => useMagnet(e, 0.4)}
-            onMouseOut={(e) => useResetMagnet(e)}
+            onMouseMove={(e) => !disabled && useMagnet(e, 0.4)}
+            onMouseOut={(e) => !disabled && useResetMagnet(e)}
           >
             <div
               ref={textRef}
@@ -336,5 +381,7 @@ const Button = forwardRef<HTMLDivElement, ButtonProps>(
     );
   },
 );
+
+Button.displayName = 'Button';
 
 export default Button;
