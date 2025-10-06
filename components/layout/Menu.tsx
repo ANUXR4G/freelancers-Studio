@@ -4,6 +4,7 @@ import { useLanguage } from '@/providers/language.provider';
 import { COLORS, ProjectType, TAG_TYPE } from '@/types';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
@@ -18,6 +19,9 @@ import { LogoFull } from '../ui/Icons';
 import Tag, { AnimatedTagRef } from '../ui/Tag';
 import CutoutWrapper, { AnimatedCutoutWrapperRef } from './CutoutWrapper';
 import logo from '@/public/logo-full.png';
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const TEXT_BUTTON = {
   fr: {
@@ -37,6 +41,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
   const logoRef = useRef(null);
   const soundRef = useRef(null);
   const headerRef = useRef<HTMLElement>(null);
+  const headerInnerRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef(null);
   const wrapperButtonRef = useRef(null);
   const contactMenuRef = useRef(null);
@@ -74,6 +79,62 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
         y: 0,
         scale: 1,
       });
+  });
+
+  const centerHeaderOnScroll = contextSafe(() => {
+    if (!headerInnerRef.current || !logoRef.current || !wrapperButtonRef.current) return;
+
+    ScrollTrigger.create({
+      trigger: 'body',
+      start: 'top top',
+      end: '+=1',
+      onEnter: () => {
+        // Calculate center position
+        const headerWidth = headerInnerRef.current.offsetWidth;
+        const logoWidth = logoRef.current.offsetWidth;
+        const buttonsWidth = wrapperButtonRef.current.offsetWidth;
+        
+        // Calculate the total width of content
+        const totalContentWidth = logoWidth + buttonsWidth;
+        
+        // Calculate the gap we want between logo and buttons (1rem = 16px)
+        const gap = 16;
+        
+        // Calculate how much we need to move each element
+        const centerPoint = headerWidth / 2;
+        const contentStartPoint = centerPoint - (totalContentWidth + gap) / 2;
+        
+        // Get current positions
+        const logoRect = logoRef.current.getBoundingClientRect();
+        const buttonsRect = wrapperButtonRef.current.getBoundingClientRect();
+        const headerRect = headerInnerRef.current.getBoundingClientRect();
+        
+        // Calculate movement needed (relative to header)
+        const logoMove = contentStartPoint - (logoRect.left - headerRect.left);
+        const buttonsMove = (contentStartPoint + logoWidth + gap) - (buttonsRect.left - headerRect.left);
+
+        // Animate both elements
+        gsap.to(logoRef.current, {
+          x: logoMove,
+          duration: 0.8,
+          ease: 'power3.out',
+        });
+
+        gsap.to(wrapperButtonRef.current, {
+          x: buttonsMove,
+          duration: 0.8,
+          ease: 'power3.out',
+        });
+      },
+      onLeaveBack: () => {
+        // Reset to original positions
+        gsap.to([logoRef.current, wrapperButtonRef.current], {
+          x: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+        });
+      },
+    });
   });
 
   const openMenu = contextSafe(() => {
@@ -304,6 +365,12 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
 
   useGSAP(() => {
     revealAnimation();
+    centerHeaderOnScroll();
+    
+    // Cleanup on unmount
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (
@@ -321,7 +388,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
         )}
       </Hint>
       <header ref={headerRef} className="px-x-default fixed z-[900] w-full">
-        <div className="flex items-center justify-between py-8">
+        <div ref={headerInnerRef} className="flex items-center justify-between py-8">
           <Link
             ref={logoRef}
             aria-label="Logo"
@@ -356,7 +423,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       <CutoutWrapper ref={cutoutRef}>
         <div
           ref={menuRef}
-className="px-x-default py-y-default gap-y-default bg-[#ed356d]/0 flex h-full w-full flex-col justify-between"
+          className="px-x-default py-y-default gap-y-default bg-[#ed356d]/0 flex h-full w-full flex-col justify-between"
         >
           <div />
           <div className="grid grid-cols-10 gap-5">
