@@ -175,7 +175,7 @@ const Button = forwardRef<HTMLDivElement, ButtonProps>(
         .to(
           textRef.current,
           {
-            color: color === 'primary' && isDark ? COLORS.BLACK : COLORS.WHITE,
+            color: COLORS.WHITE,
           },
           '<',
         )
@@ -217,7 +217,7 @@ const Button = forwardRef<HTMLDivElement, ButtonProps>(
         .to(
           textRef.current,
           {
-            color: color === 'secondary' || isDark ? COLORS.WHITE : COLORS.BLACK,
+            color: COLORS.WHITE,
           },
           '<',
         )
@@ -256,10 +256,10 @@ const Button = forwardRef<HTMLDivElement, ButtonProps>(
           ref={ref}
           className={clsx(
             'label inline-block h-11 w-fit cursor-pointer overflow-hidden rounded-full uppercase transition-colors duration-200',
-            color === 'primary' && 'bg-menu hover:bg-blue text-black hover:text-white',
-            color === 'primary' && isDark && 'text-black hover:text-white',
-            color === 'secondary' && 'bg-blue text-white hover:bg-black hover:text-white',
-            color === 'tertiary' && 'bg-yellow text-black hover:bg-black hover:text-white',
+            color === 'primary' && 'bg-menu hover:bg-[#ed356d] text-white hover:text-white',
+            color === 'primary' && isDark && 'text-white hover:text-white',
+            color === 'secondary' && 'bg-[#ed356d] text-white hover:bg-black hover:text-white',
+            color === 'tertiary' && 'bg-yellow text-white hover:bg-black hover:text-white',
             `origin-${transformOrigin}`,
             disabled ? 'cursor-default! opacity-70' : 'cursor-pointer',
             className,
@@ -282,10 +282,10 @@ const Button = forwardRef<HTMLDivElement, ButtonProps>(
           ref={ref}
           className={clsx(
             'label group/button inline-block h-11 w-fit cursor-pointer overflow-hidden rounded-full uppercase backdrop-blur-xl',
-            color === 'primary' && 'bg-blur-glass text-black',
+            color === 'primary' && 'bg-blur-glass text-white',
             color === 'primary' && isDark && 'text-white',
-            color === 'secondary' && 'bg-blue text-white',
-            color === 'tertiary' && 'bg-yellow text-black',
+            color === 'secondary' && 'bg-[#ed356d] text-white',
+            color === 'tertiary' && 'bg-yellow text-white',
             `origin-${transformOrigin}`,
             disabled ? 'cursor-default! opacity-70' : 'cursor-pointer',
             className,
