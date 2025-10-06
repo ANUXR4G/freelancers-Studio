@@ -114,7 +114,7 @@ const CardUs = ({ member, index, wrapperImagesRefs, imagesRefs }: CardUsProps) =
         width={1080}
       />
       <div className="absolute right-3.5 bottom-3.5 left-3.5 flex h-auto flex-col justify-between rounded-2xl bg-white p-4">
-        <h2 className="text-blue p2 shrink-0">{member.name}</h2>
+        <h2 className="text-[#ed356d] p2 shrink-0">{member.name}</h2>
         <p className="p3 p shrink-0 text-black">{isFrench ? member.role.fr : member.role.en}</p>
         <div ref={descriptionRef} className="overflow-hidden rounded-xl bg-black">
           <p ref={textDescriptionRef} className="p3 text-white-70 p-5 text-left">

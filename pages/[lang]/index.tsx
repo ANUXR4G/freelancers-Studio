@@ -7,6 +7,7 @@ import Philosophy from '@/features/home/Philosophy';
 import Expertise from '@/features/shared/expertise/Expertise';
 import Faq from '@/features/shared/Faq';
 import Timeline from '@/features/shared/timeline/Timeline';
+import Us from '@/features/team/Us';
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <Philosophy />
       <Expertise />
       <Timeline />
+      <Us />
       <CustomBento /> {/* <TrustedBy /> */}
       <LetsTalk />
     </div>
