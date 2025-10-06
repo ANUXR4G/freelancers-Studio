@@ -128,8 +128,8 @@ export const QUESTIONS = [
   {
     id: 5,
     question: {
-      en: 'Why choose Metabole over a freelancer or agency?',
-      fr: "Pourquoi choisir Metabole plutôt qu'un freelance ou une agence ?",
+      en: 'Why choose Freelancersstudio over a freelancer or agency?',
+      fr: "Pourquoi choisir Freelancersstudio plutôt qu'un freelance ou une agence ?",
     },
     answer: {
       en: (

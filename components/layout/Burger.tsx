@@ -275,7 +275,7 @@ const Burger = () => {
             <a className="text-[#ed356d]" href={'mailto:' + CONTACT.EMAIL}>
               {CONTACT.EMAIL}
             </a>
-            <p>Metabole® 2025</p>
+            <p>Freelancersstudio® 2025</p>
             <Time isDark={false} />
           </div>
           <div className="flex w-fit shrink-0 justify-end overflow-hidden">

@@ -204,7 +204,7 @@ const Footer = () => {
                 </div>
               </div>
               <div className="flex w-full flex-col justify-between gap-5 md:flex-row md:items-center lg:grid lg:grid-cols-6">
-                <p>Metabole® 2025</p>
+                <p>Freelancersstudio® 2025</p>
                 <p className="whitespace-nowrap">{CONTACT.ADDRESS}</p>
                 <Time className="block md:hidden lg:block" isDark={true} />
                 <a href={'mailto:' + CONTACT.EMAIL}>{CONTACT.EMAIL}</a>

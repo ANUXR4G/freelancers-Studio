@@ -194,7 +194,7 @@ const ProjectStudio = () => {
                       });
                       setSteps(stepsToSave);
                       localStorage.setItem(
-                        'metabole-quote-builder-steps',
+                        'Freelancersstudio-quote-builder-steps',
                         JSON.stringify(stepsToSave),
                       );
                     } else {

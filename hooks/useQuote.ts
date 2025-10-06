@@ -52,31 +52,31 @@ export const useQuote = () => {
   }, [formData]);
 
   useEffect(() => {
-    const storedPages = localStorage.getItem('metabole-quote-builder-pages');
+    const storedPages = localStorage.getItem('Freelancersstudio-quote-builder-pages');
     if (storedPages) {
       const parsedPages: Page[] = JSON.parse(storedPages);
       setPages(parsedPages);
     }
 
-    const storedAnimation = localStorage.getItem('metabole-quote-builder-animation');
+    const storedAnimation = localStorage.getItem('Freelancersstudio-quote-builder-animation');
     if (storedAnimation) {
       const parsedAnimation: Animation = JSON.parse(storedAnimation);
       setSelectedAnimation(parsedAnimation);
     }
 
-    const storedOptions = localStorage.getItem('metabole-quote-builder-options');
+    const storedOptions = localStorage.getItem('Freelancersstudio-quote-builder-options');
     if (storedOptions) {
       const parsedOptions: Option[] = JSON.parse(storedOptions);
       setOptions(parsedOptions);
     }
 
-    const storedForm = localStorage.getItem('metabole-quote-builder-form');
+    const storedForm = localStorage.getItem('Freelancersstudio-quote-builder-form');
     if (storedForm) {
       const parsedForm: StepFormData = JSON.parse(storedForm);
       setFormData(parsedForm);
     }
 
-    const storedStepsState = localStorage.getItem('metabole-quote-builder-steps');
+    const storedStepsState = localStorage.getItem('Freelancersstudio-quote-builder-steps');
     if (storedStepsState) {
       try {
         const parsedStepsState: StepState[] = JSON.parse(storedStepsState);
@@ -95,7 +95,7 @@ export const useQuote = () => {
         );
       } catch (error) {
         console.error('Erreur lors de la reconstruction des steps:', error);
-        localStorage.removeItem('metabole-quote-builder-steps');
+        localStorage.removeItem('Freelancersstudio-quote-builder-steps');
       }
     }
   }, []);
@@ -124,21 +124,21 @@ export const useQuote = () => {
       };
 
       const updatedPages = [...pages, newPage];
-      localStorage.setItem('metabole-quote-builder-pages', JSON.stringify(updatedPages));
+      localStorage.setItem('Freelancersstudio-quote-builder-pages', JSON.stringify(updatedPages));
       setPages(updatedPages);
     } else {
       const updatedPages = pages.map((page) =>
         page.id === pageIdOrTitle ? { ...page, selected: !page.selected } : page,
       );
 
-      localStorage.setItem('metabole-quote-builder-pages', JSON.stringify(updatedPages));
+      localStorage.setItem('Freelancersstudio-quote-builder-pages', JSON.stringify(updatedPages));
       setPages(updatedPages);
     }
   };
 
   const handleDeletePage = (pageId: string) => {
     const updatedPages = pages.filter((page) => page.id !== pageId);
-    localStorage.setItem('metabole-quote-builder-pages', JSON.stringify(updatedPages));
+    localStorage.setItem('Freelancersstudio-quote-builder-pages', JSON.stringify(updatedPages));
     setPages(updatedPages);
   };
 
@@ -146,23 +146,23 @@ export const useQuote = () => {
     const updatedPages = pages.map((page) =>
       page.id === pageId ? { ...page, selected: false } : page,
     );
-    localStorage.setItem('metabole-quote-builder-pages', JSON.stringify(updatedPages));
+    localStorage.setItem('Freelancersstudio-quote-builder-pages', JSON.stringify(updatedPages));
     setPages(updatedPages);
   };
 
   const handleResetPages = () => {
-    localStorage.removeItem('metabole-quote-builder-pages');
+    localStorage.removeItem('Freelancersstudio-quote-builder-pages');
     setPages(PAGES.map((page) => ({ ...page, selected: false })));
   };
 
   // ANIMATIONS
   const handleAnimationChange = (newAnimation: Animation) => {
-    localStorage.setItem('metabole-quote-builder-animation', JSON.stringify(newAnimation));
+    localStorage.setItem('Freelancersstudio-quote-builder-animation', JSON.stringify(newAnimation));
     setSelectedAnimation(newAnimation);
   };
 
   const handleResetAnimations = () => {
-    localStorage.removeItem('metabole-quote-builder-animation');
+    localStorage.removeItem('Freelancersstudio-quote-builder-animation');
     setSelectedAnimation(ANIMATIONS.IMMERSIVES);
   };
 
@@ -172,23 +172,23 @@ export const useQuote = () => {
       option.id === optionId ? { ...option, selected: !option.selected } : option,
     );
 
-    localStorage.setItem('metabole-quote-builder-options', JSON.stringify(updatedOptions));
+    localStorage.setItem('Freelancersstudio-quote-builder-options', JSON.stringify(updatedOptions));
     setOptions(updatedOptions);
   };
 
   const handleResetOptions = () => {
-    localStorage.removeItem('metabole-quote-builder-options');
+    localStorage.removeItem('Freelancersstudio-quote-builder-options');
     setOptions(OPTIONS.map((option) => ({ ...option, id: uuidv4(), selected: false })));
   };
 
   // FORM
   const handleFormChange = (updatedFormData: StepFormData) => {
-    localStorage.setItem('metabole-quote-builder-form', JSON.stringify(updatedFormData));
+    localStorage.setItem('Freelancersstudio-quote-builder-form', JSON.stringify(updatedFormData));
     setFormData(updatedFormData);
   };
 
   const handleResetForm = () => {
-    localStorage.removeItem('metabole-quote-builder-form');
+    localStorage.removeItem('Freelancersstudio-quote-builder-form');
     setFormData({ name: '', email: '', phone: '', message: '' });
   };
 
@@ -221,7 +221,7 @@ export const useQuote = () => {
         ...step,
         isActive: index === stepIndex,
       }));
-      localStorage.setItem('metabole-quote-builder-steps', JSON.stringify(updatedSteps));
+      localStorage.setItem('Freelancersstudio-quote-builder-steps', JSON.stringify(updatedSteps));
       return updatedSteps;
     });
   };
@@ -252,17 +252,17 @@ export const useQuote = () => {
           return step;
         }
       });
-      localStorage.setItem('metabole-quote-builder-steps', JSON.stringify(updatedSteps));
+      localStorage.setItem('Freelancersstudio-quote-builder-steps', JSON.stringify(updatedSteps));
       return updatedSteps;
     });
   };
 
   const resetForm = () => {
-    localStorage.removeItem('metabole-quote-builder-pages');
-    localStorage.removeItem('metabole-quote-builder-animation');
-    localStorage.removeItem('metabole-quote-builder-options');
-    localStorage.removeItem('metabole-quote-builder-form');
-    localStorage.removeItem('metabole-quote-builder-steps');
+    localStorage.removeItem('Freelancersstudio-quote-builder-pages');
+    localStorage.removeItem('Freelancersstudio-quote-builder-animation');
+    localStorage.removeItem('Freelancersstudio-quote-builder-options');
+    localStorage.removeItem('Freelancersstudio-quote-builder-form');
+    localStorage.removeItem('Freelancersstudio-quote-builder-steps');
 
     setPages(PAGES.map((page) => ({ ...page, selected: false })));
     setSelectedAnimation(ANIMATIONS.IMMERSIVES);

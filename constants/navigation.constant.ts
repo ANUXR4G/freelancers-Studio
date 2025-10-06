@@ -27,19 +27,19 @@ export const LINKS = [
 
 export const SOCIALS = [
   {
-    href: 'https://bento.me/metabole-studio',
+    href: 'https://bento.me/Freelancersstudio-studio',
     text: 'Bento',
   },
   {
-    href: 'https://awwwards.com/metabole-studio/',
+    href: 'https://awwwards.com/Freelancersstudio-studio/',
     text: 'Awwwards',
   },
   {
-    href: 'https://instagram.com/metabole.studio',
+    href: 'https://instagram.com/Freelancersstudio.studio',
     text: 'Instagram',
   },
   {
-    href: 'https://linkedin.com/company/metabole-studio',
+    href: 'https://linkedin.com/company/Freelancersstudio-studio',
     text: 'Linkedin',
   },
 ];

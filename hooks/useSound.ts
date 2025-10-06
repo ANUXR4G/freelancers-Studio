@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const FADE_DURATION = 0.5;
-const SOUND_STORAGE_KEY = 'metabole-sound-enabled';
+const SOUND_STORAGE_KEY = 'Freelancersstudio-sound-enabled';
 
 let globalAudioRef: HTMLAudioElement | null = null;
 let globalAudioContext: AudioContext | null = null;

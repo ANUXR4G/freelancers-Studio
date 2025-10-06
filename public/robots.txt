@@ -1,4 +1,4 @@
-# robots.txt pour Metabole STUDIO
+# robots.txt pour Freelancersstudio STUDIO
 User-agent: *
 Allow: /en
 Allow: /fr
@@ -16,7 +16,7 @@ Disallow: /preview
 Crawl-delay: 1
 
 # Sitemap
-Sitemap: https://metabole.studio/sitemap.xml
+Sitemap: https://Freelancersstudio.studio/sitemap.xml
 
 # Directive pour éviter les conflits de canonique
-# Forcer l'utilisation de metabole.studio (sans www) comme version canonique
+# Forcer l'utilisation de Freelancersstudio.studio (sans www) comme version canonique

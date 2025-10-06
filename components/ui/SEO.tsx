@@ -14,12 +14,12 @@ interface SEOProps {
 }
 
 const SEO = ({
-  title = 'Metabole - Creative Studio Paris | Metabole STUDIO',
+  title = 'Freelancersstudio - Creative Studio Paris | Freelancersstudio STUDIO',
   isFrench = false,
-  descriptionEn = 'Metabole is a creative studio based in Paris, France, founded by Matteo COURQUIN and Jérôme BEZEAU. Metabole STUDIO creates unique web experiences for brands and agencies.',
-  descriptionFr = 'Metabole est un studio créatif basé à Paris, France, fondé par Matteo COURQUIN et Jérôme BEZEAU. Metabole STUDIO crée des expériences web uniques pour les marques et les agences.',
+  descriptionEn = 'Freelancersstudio is a creative studio based in Paris, France, founded by Matteo COURQUIN and Jérôme BEZEAU. Freelancersstudio STUDIO creates unique web experiences for brands and agencies.',
+  descriptionFr = 'Freelancersstudio est un studio créatif basé à Paris, France, fondé par Matteo COURQUIN et Jérôme BEZEAU. Freelancersstudio STUDIO crée des expériences web uniques pour les marques et les agences.',
   image = '/og-image.png',
-  url = 'https://metabole.studio',
+  url = 'https://Freelancersstudio.studio',
   type = 'website',
   isHomePage = false,
   noindex = false,
@@ -43,7 +43,7 @@ const SEO = ({
       <meta content={noindex ? 'noindex, nofollow' : 'index, follow'} name="robots" />
 
       {/* Canonical link */}
-      <link key="canonical" href={'https://metabole.studio' + asPath} rel="canonical" />
+      <link key="canonical" href={'https://Freelancersstudio.studio' + asPath} rel="canonical" />
 
       {/* OpenGraph Tags */}
       <meta content={title} property="og:title" />
@@ -51,7 +51,7 @@ const SEO = ({
       <meta content={`${url}${image}`} property="og:image" />
       <meta content={url} property="og:url" />
       <meta content={type} property="og:type" />
-      <meta content="Metabole STUDIO" property="og:site_name" />
+      <meta content="Freelancersstudio STUDIO" property="og:site_name" />
       <meta content={isFrench ? 'fr_FR' : 'en_US'} property="og:locale" />
 
       {/* Twitter Card */}
@@ -63,9 +63,9 @@ const SEO = ({
       {/* Google verification - Uncomment when ready */}
       <meta content="XyGSPQ3t1FMXH4Xl-yEoWbFEElAi0d2FaE5MN8t4UhU" name="google-site-verification" />
 
-      {/* Keywords - Optimisé pour "metabole" et "metabole studio" */}
+      {/* Keywords - Optimisé pour "Freelancersstudio" et "Freelancersstudio studio" */}
       <meta
-        content="metabole, Metabole, METABOLE, metabole studio, Metabole STUDIO, studio metabole, creative studio, Paris, France, Matteo COURQUIN, Jérôme BEZEAU, websites, sites, web, web experiences, design, development, animation, 3D, nextjs, gsap, threejs, unique, brands, agencies, studio créatif, expériences web"
+        content="Freelancersstudio, Freelancersstudio, Freelancersstudio, Freelancersstudio studio, Freelancersstudio STUDIO, studio Freelancersstudio, creative studio, Paris, France, Matteo COURQUIN, Jérôme BEZEAU, websites, sites, web, web experiences, design, development, animation, 3D, nextjs, gsap, threejs, unique, brands, agencies, studio créatif, expériences web"
         name="keywords"
       />
 
@@ -75,9 +75,9 @@ const SEO = ({
       {/* Hreflang - Gestion spéciale pour la page d'accueil */}
       {isHomePage ? (
         <>
-          <link href="https://metabole.studio/fr" hrefLang="fr" rel="alternate" />
-          <link href="https://metabole.studio/en" hrefLang="en" rel="alternate" />
-          <link href="https://metabole.studio" hrefLang="x-default" rel="alternate" />
+          <link href="https://Freelancersstudio.studio/fr" hrefLang="fr" rel="alternate" />
+          <link href="https://Freelancersstudio.studio/en" hrefLang="en" rel="alternate" />
+          <link href="https://Freelancersstudio.studio" hrefLang="x-default" rel="alternate" />
         </>
       ) : (
         <link

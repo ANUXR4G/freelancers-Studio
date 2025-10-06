@@ -114,7 +114,7 @@ const Hero = () => {
         {isFrench ? (
           <p>
             Nous sommes deux créatifs, unis par le souci du détail et le goût des belles choses.
-            C'est la parfaite symbiose de nos compétences qui a donné naissance à Metabole.
+            C'est la parfaite symbiose de nos compétences qui a donné naissance à Freelancersstudio.
             <br />
             <br />
             Notre objectif est de pouvoir créer des produits qui répondent aux problématiques de
@@ -124,7 +124,7 @@ const Hero = () => {
         ) : (
           <p>
             We are two creatives, united by the desire for detail and the taste for beautiful
-            things. It is the perfect synergy of our skills that has given birth to Metabole.
+            things. It is the perfect synergy of our skills that has given birth to Freelancersstudio.
             <br />
             <br />
             Our goal is to be able to create products that respond to the problems of the current

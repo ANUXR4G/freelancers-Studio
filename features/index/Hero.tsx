@@ -140,7 +140,7 @@ const Hero = () => {
     >
       <ScrollingContainer scrollSpeed={15}>
         <div className="flex shrink-0 flex-row gap-x-7 pl-7">
-          <h1 className="text-blue !text-[70px] !leading-normal md:!text-[120px]">METABOLE</h1>
+          <h1 className="text-blue !text-[70px] !leading-normal md:!text-[120px]">Freelancersstudio</h1>
           <div className="flex flex-col justify-between">
             <IconCross color={COLORS.BLUE} />
             <IconCross color={COLORS.BLUE} />
@@ -150,7 +150,7 @@ const Hero = () => {
             <IconCross color={COLORS.BLUE} />
             <IconCross color={COLORS.BLUE} />
           </div>
-          <h1 className="text-blue !text-[70px] !leading-normal md:!text-[120px]">METABOLE</h1>
+          <h1 className="text-blue !text-[70px] !leading-normal md:!text-[120px]">Freelancersstudio</h1>
           <div className="flex flex-col justify-between">
             <IconCross color={COLORS.BLUE} />
             <IconCross color={COLORS.BLUE} />
@@ -171,7 +171,7 @@ const Hero = () => {
             />
             {isIndexFrench ? (
               <>
-                <span>Metabole est un </span>
+                <span>Freelancersstudio est un </span>
                 <span className="text-blue">studio créatif</span>
                 <span> qui conçoit des </span>
                 <span className="text-blue">expériences interactives</span>
@@ -181,7 +181,7 @@ const Hero = () => {
               </>
             ) : (
               <>
-                <span>Metabole is a </span>
+                <span>Freelancersstudio is a </span>
                 <span className="text-[#ed356d]">creative studio</span>
                 <span> that designs </span>
                 <span className="text-[#ed356d]">interactive experiences</span>

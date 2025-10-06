@@ -449,7 +449,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
               style={{ opacity: 0 }}
               onClick={closeMenu}
             >
-              <Image alt="Metabole Logo" height={100} src={logo} width={120} priority />
+              <Image alt="Freelancersstudio Logo" height={100} src={logo} width={120} priority />
             </Link>
             <div ref={wrapperButtonRef} className="flex gap-4">
               <Sound ref={soundRef} className="shrink-0" isDark={true} style={{ opacity: 0 }} />
@@ -569,7 +569,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
             ref={infosRef}
             className="flex w-full items-center justify-between gap-5 overflow-y-hidden whitespace-nowrap xl:grid xl:grid-cols-6"
           >
-            <p>Metabole® 2025</p>
+            <p>Freelancersstudio® 2025</p>
             <p className="hidden lg:block">{CONTACT.ADDRESS}</p>
             <Time isDark={false} />
             <a className="col-span-2" href={'mailto:' + CONTACT.EMAIL}>

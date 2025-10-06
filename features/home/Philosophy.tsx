@@ -169,7 +169,7 @@ const Philosophy = () => {
         >
           {isFrench ? (
             <>
-              <span>Metabole est un </span>
+              <span>Freelancersstudio est un </span>
               <span className="text-[#ed356d]">studio créatif</span>
               <span> qui conçoit des </span>
               <span className="text-[#ed356d]">expériences interactives</span>
@@ -179,7 +179,7 @@ const Philosophy = () => {
             </>
           ) : (
             <>
-              <span>Metabole is a </span>
+              <span>Freelancersstudio is a </span>
               <span className="text-[#ed356d]">creative studio</span>
               <span> that designs </span>
               <span className="text-[#ed356d]">interactive</span>

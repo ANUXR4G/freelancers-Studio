@@ -1,4 +1,4 @@
-const isProd = typeof window !== 'undefined' && window.location.href.includes('metabole.studio');
+const isProd = typeof window !== 'undefined' && window.location.href.includes('Freelancersstudio.studio');
 
 export const config = {
   api: {

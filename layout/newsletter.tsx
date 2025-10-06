@@ -4,7 +4,7 @@ import SEO from '@/components/ui/SEO';
 import { useLanguage } from '@/providers/language.provider';
 import Link from 'next/link';
 import { ReactNode } from 'react';
-import metaboleFull from '../public/lotties/metabole-full-yellow.json';
+import FreelancersstudioFull from '../public/lotties/Freelancersstudio-full-yellow.json';
 import Background from '@/components/layout/BackgroundInteractive';
 
 interface NewsletterLayoutProps {
@@ -19,7 +19,7 @@ export default function NewsletterLayout({ children }: NewsletterLayoutProps) {
       <div className="fixed flex h-screen w-screen flex-col bg-black">
         <header className="px-x-default flex w-screen justify-center py-6">
           <Link className="cursor-pointer" href={getInternalPath('/')} scroll={false}>
-            <Lottie animationData={metaboleFull} className="h-10" />
+            <Lottie animationData={FreelancersstudioFull} className="h-10" />
           </Link>
         </header>
         <main className="flex-grow">{children}</main>
