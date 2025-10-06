@@ -36,7 +36,7 @@ export const TEAM_MEMBERS = [
       ),
     },
     image: '/images/shubham.PNG',
-    website: 'https://matteocourquin.com',
-    alt: 'Matteo COURQUIN',
+    website: 'https://linktr.ee/Shubhhhere',
+    alt: 'Shubham Malbari',
   },
 ];
