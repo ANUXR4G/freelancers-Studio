@@ -256,7 +256,7 @@ const Button = forwardRef<HTMLDivElement, ButtonProps>(
           ref={ref}
           className={clsx(
             'label inline-block h-11 w-fit cursor-pointer overflow-hidden rounded-full uppercase transition-colors duration-200',
-            color === 'primary' && 'bg-menu hover:bg-[#ed356d] text-white hover:text-white',
+            color === 'primary' && 'bg-menu text-white hover:bg-[#ed356d] hover:text-white',
             color === 'primary' && isDark && 'text-white hover:text-white',
             color === 'secondary' && 'bg-[#ed356d] text-white hover:bg-black hover:text-white',
             color === 'tertiary' && 'bg-yellow text-white hover:bg-black hover:text-white',
@@ -309,7 +309,7 @@ const Button = forwardRef<HTMLDivElement, ButtonProps>(
           />
           <div
             ref={buttonRef}
-            className="z-20 flex h-full w-full items-center bg-[#ed356d] text-white text-[17px]"
+            className="z-20 flex h-full w-full items-center bg-[#ed356d] text-[17px] text-white"
             onMouseMove={(e) => useMagnet(e, 0.4)}
             onMouseOut={(e) => useResetMagnet(e)}
           >

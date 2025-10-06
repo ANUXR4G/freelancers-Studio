@@ -21,7 +21,7 @@ export default function Home() {
       <Philosophy />
       <Expertise />
       <Timeline />
-      <CustomBento />      {/* <TrustedBy /> */}
+      <CustomBento /> {/* <TrustedBy /> */}
       <LetsTalk />
     </div>
   );

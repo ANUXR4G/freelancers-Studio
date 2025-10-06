@@ -159,10 +159,7 @@ const Hero = () => {
         {isFrench ? (
           <span className="hidden md:block">
             <div className="relative">
-              <IconCross
-                className="absolute -top-10 -right-10 hidden md:block"
-                color="#ed356d"
-              />
+              <IconCross className="absolute -top-10 -right-10 hidden md:block" color="#ed356d" />
               <span ref={desktopSpan1Ref} className="relative block text-left whitespace-nowrap">
                 <span>
                   <span>Conception de </span>
@@ -201,10 +198,7 @@ const Hero = () => {
         ) : (
           <span className="hidden md:block">
             <div className="relative">
-              <IconCross
-                className="absolute -top-10 -right-10 hidden md:block"
-                color="#ed356d"
-              />
+              <IconCross className="absolute -top-10 -right-10 hidden md:block" color="#ed356d" />
               <span ref={desktopSpan1Ref} className="relative block text-left whitespace-nowrap">
                 <span>
                   <span>Designing </span>
@@ -245,17 +239,17 @@ const Hero = () => {
           </span>
         )}
       </h1>
-      <div className="justify-center flex gap-4 pt-20">
-        <Button 
-          className="bg-gradient-to-r from-[#ed356d] to-[#c92a5a] hover:bg-gradient-to-br text-7xl text-white" 
-          href={getInternalPath('/en/contact')} 
+      <div className="flex justify-center gap-4 pt-20">
+        <Button
+          className="bg-gradient-to-r from-[#ed356d] to-[#c92a5a] text-7xl text-white hover:bg-gradient-to-br"
+          href={getInternalPath('/en/contact')}
           scroll={false}
         >
           {isFrench ? <span>CONTACT</span> : <span>CONTACT</span>}
         </Button>
-        <Button 
-          className="bg-gradient-to-r from-[#ed356d] to-[#c92a5a] hover:bg-gradient-to-br text-white" 
-          href={getInternalPath('/en/our-portfolio')} 
+        <Button
+          className="bg-gradient-to-r from-[#ed356d] to-[#c92a5a] text-white hover:bg-gradient-to-br"
+          href={getInternalPath('/en/our-portfolio')}
           scroll={false}
         >
           {isFrench ? <span>OFFRES</span> : <span>portfolio</span>}

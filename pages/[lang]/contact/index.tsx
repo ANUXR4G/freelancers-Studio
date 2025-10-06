@@ -90,8 +90,8 @@ const ContactPage = () => {
           {isFrench ? (
             <>
               Partagez-nous les grandes lignes via le formulaire ci-dessous.{' '}
-              <span className="text-[#ed356d]">On revient vers vous sous 48h</span> pour faire avancer
-              les choses ensemble.
+              <span className="text-[#ed356d]">On revient vers vous sous 48h</span> pour faire
+              avancer les choses ensemble.
             </>
           ) : (
             <>

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function PerformanceIndicator() {
-  return (
-    <div></div>
-  )
+  return <div></div>;
 }
 
-export default PerformanceIndicator
+export default PerformanceIndicator;

@@ -191,7 +191,7 @@ const ExpertiseDesktop = () => {
                   className={clsx(
                     'z-10 inline-block bg-black pl-4 transition-transform duration-300',
 
-                    index === activeIndex ? 'text-[#ed356d] -translate-x-4' : 'text-white-30',
+                    index === activeIndex ? '-translate-x-4 text-[#ed356d]' : 'text-white-30',
                   )}
                 >
                   {item[isFrench ? 'fr' : 'en']}

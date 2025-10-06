@@ -181,7 +181,7 @@ const Timeline = () => {
           <IconCross className="absolute -right-10 bottom-0 hidden md:block" color={COLORS.WHITE} />
         </h1>
         <div className="relative h-0.5 w-[35vw] max-w-[489px] bg-[#ed356d]">
-          <div ref={progressBarRef} className="bg-[#ed356d] absolute h-0.5 w-0">
+          <div ref={progressBarRef} className="absolute h-0.5 w-0 bg-[#ed356d]">
             <svg
               className="absolute -top-[3px] -right-3"
               fill="none"
@@ -279,7 +279,10 @@ const Timeline = () => {
                   ref={wrapperLineRef}
                   className="pointer-events-none absolute bottom-3 z-50 hidden h-[calc(100%+100px)] w-full -translate-x-full bg-black/50 md:block"
                 >
-                  <div ref={lineRef} className="bg-[#ed356d] absolute top-0 right-0 z-10 h-full w-0.5">
+                  <div
+                    ref={lineRef}
+                    className="absolute top-0 right-0 z-10 h-full w-0.5 bg-[#ed356d]"
+                  >
                     <svg
                       className="absolute -top-3 -right-[3px]"
                       fill="none"
@@ -315,7 +318,7 @@ const Timeline = () => {
                   icon={<IconIdeation />}
                   label="IDEATION"
                   className={clsx(
-                    'col-start-2 col-end-3 row-start-2 transition-opacity duration-200 bg-[#ed356d]',
+                    'col-start-2 col-end-3 row-start-2 bg-[#ed356d] transition-opacity duration-200',
                     activeIndex === null || activeIndex === 1 ? 'opacity-100' : 'opacity-40',
                   )}
                   description={
@@ -386,7 +389,7 @@ const Timeline = () => {
                   label={isFrench ? 'ACCOMPAGNEMENT' : 'SUPPORT'}
                   className={clsx(
                     'col-start-9 col-end-10 row-start-6',
-                    'after:from-[#ed356d] h-item after:content-[""]s after:absolute after:top-[3px] after:right-0 after:w-[288px] after:translate-x-[calc(100%-14px)] after:bg-gradient-to-r after:to-black',
+                    'h-item after:content-[""]s after:absolute after:top-[3px] after:right-0 after:w-[288px] after:translate-x-[calc(100%-14px)] after:bg-gradient-to-r after:from-[#ed356d] after:to-black',
                     'transition-opacity duration-200',
                     activeIndex === null || activeIndex === 5 ? 'opacity-100' : 'opacity-40',
                   )}

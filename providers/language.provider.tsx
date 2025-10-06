@@ -18,8 +18,6 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <LanguageContext.Provider value={{ getInternalPath }}>
-      {children}
-    </LanguageContext.Provider>
+    <LanguageContext.Provider value={{ getInternalPath }}>{children}</LanguageContext.Provider>
   );
 };

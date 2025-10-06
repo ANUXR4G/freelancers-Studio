@@ -10,9 +10,7 @@ const Language = forwardRef<
       ref={ref}
       className={clsx('p3', isDark ? 'text-yellow' : 'text-blue', className)}
       onClick={onClick}
-    >
-      
-    </div>
+    ></div>
   );
 });
 

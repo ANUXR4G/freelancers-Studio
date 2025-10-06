@@ -231,7 +231,7 @@ const Philosophy = () => {
         </AnimatedText>
       </div>
 
-      <Button className='bg-[#ed356d]' href={getInternalPath('/en/services')} scroll={false}>
+      <Button className="bg-[#ed356d]" href={getInternalPath('/en/services')} scroll={false}>
         {isFrench ? 'NOS SERVICES' : 'OUR SERVICES'}
       </Button>
     </section>

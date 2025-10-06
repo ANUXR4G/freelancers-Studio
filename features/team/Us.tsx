@@ -130,10 +130,7 @@ const Us = ({ isPageTeam = false }: { isPageTeam?: boolean }) => {
         <IconCross className="absolute -right-10 bottom-0 hidden md:block" color={COLORS.BLACK} />
       </h1>
       <div className="lg:px-x-default relative flex flex-col gap-5 md:flex-row md:pb-[200px]">
-        <IconCross
-          className="left-x-default absolute -bottom-20 hidden md:block"
-          color="#ed356d"
-        />
+        <IconCross className="left-x-default absolute -bottom-20 hidden md:block" color="#ed356d" />
         {TEAM_MEMBERS.map((member, index) => (
           <CardUs
             key={member.name}
@@ -145,7 +142,7 @@ const Us = ({ isPageTeam = false }: { isPageTeam?: boolean }) => {
         ))}
       </div>
       {!isPageTeam && (
-        <Button className='bg-[#ed356d]' href={getInternalPath('/en/team')}>
+        <Button className="bg-[#ed356d]" href={getInternalPath('/en/team')}>
           {isFrench ? 'Notre équipe' : 'Our team'}
         </Button>
       )}

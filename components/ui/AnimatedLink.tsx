@@ -99,7 +99,7 @@ const AnimatedLink = forwardRef<HTMLAnchorElement, AnimatedLinkProps>(
         <span ref={currentChildRef} className="text-black-70 relative z-10">
           {children}
         </span>
-        <span ref={absoluteChildRef} aria-hidden={true} className="text-[#ed356d] absolute z-10">
+        <span ref={absoluteChildRef} aria-hidden={true} className="absolute z-10 text-[#ed356d]">
           {children}
         </span>
       </Link>

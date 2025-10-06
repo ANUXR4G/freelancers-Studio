@@ -18,12 +18,12 @@ export default function GalleryOne() {
     <>
       <style jsx>{`
         .gallery-section {
-          min-height: 100vh;
           display: flex;
+          position: relative;
           align-items: center;
           justify-content: center;
+          min-height: 100vh;
           overflow: hidden;
-          position: relative;
         }
 
         .carousel-3d {
@@ -50,12 +50,12 @@ export default function GalleryOne() {
         }
 
         .carousel-card img {
+          display: block;
           width: 380px;
           height: 580px;
           object-fit: cover;
           border-radius: 16px;
           box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-          display: block;
         }
 
         .carousel-card:hover img {
@@ -73,18 +73,13 @@ export default function GalleryOne() {
       <div className="gallery-section">
         <div className="carousel-3d">
           <div className="carousel-wrapper">
-            <Marquee
-              className="carousel-track"
-              speed={50}
-              gradient={false}
-              pauseOnHover={true}
-            >
+            <Marquee className="carousel-track" gradient={false} pauseOnHover={true} speed={50}>
               {gallery_images.map((img, idx) => {
                 // Calculate the curve rotation for each card
                 const rotationAngle = (idx * 12) % 360;
                 const yRotation = Math.sin((rotationAngle * Math.PI) / 180) * 18;
                 const zTranslation = Math.cos((rotationAngle * Math.PI) / 180) * 100;
-                
+
                 return (
                   <div
                     key={idx}
@@ -94,12 +89,12 @@ export default function GalleryOne() {
                     }}
                   >
                     <Image
-                      src={img}
                       alt={`Gallery image ${idx + 1}`}
-                      width={380}
                       height={580}
                       placeholder="blur"
                       priority={idx < 3}
+                      src={img}
+                      width={380}
                     />
                   </div>
                 );

@@ -141,7 +141,7 @@ const Hero = () => {
       />
       <ScrollingContainer scrollSpeed={15}>
         <div className="flex shrink-0 flex-row gap-x-7 pl-7">
-          <h1 className="text-[#ed356d] !text-[70px] !leading-normal md:!text-[120px]">SERVICES</h1>
+          <h1 className="!text-[70px] !leading-normal text-[#ed356d] md:!text-[120px]">SERVICES</h1>
           <div className="flex flex-col justify-between">
             <IconCross color="#ed356d" />
             <IconCross color="#ed356d" />
@@ -151,7 +151,7 @@ const Hero = () => {
             <IconCross color="#ed356d" />
             <IconCross color="#ed356d" />
           </div>
-          <h1 className="text-[#ed356d] !text-[70px] !leading-normal md:!text-[120px]">SERVICES</h1>
+          <h1 className="!text-[70px] !leading-normal text-[#ed356d] md:!text-[120px]">SERVICES</h1>
           <div className="flex flex-col justify-between">
             <IconCross color="#ed356d" />
             <IconCross color="#ed356d" />

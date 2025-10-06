@@ -78,7 +78,7 @@ const Faq = () => {
           ref={titleRef}
           className="absolute top-0 flex h-full w-full items-center justify-center"
         >
-          <h1 className="text-[#ed356d] h-full text-center !text-[70px]">F.A.Q</h1>
+          <h1 className="h-full text-center !text-[70px] text-[#ed356d]">F.A.Q</h1>
         </div>
         <div ref={sectionRef} className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {columns.map((column, columnIndex) => (

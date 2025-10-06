@@ -10,7 +10,7 @@ const nextConfig = {
     unoptimized: true,
   },
   transpilePackages: ['gsap', '@gsap/react'],
-  
+
   async redirects() {
     return [
       {
@@ -20,6 +20,6 @@ const nextConfig = {
       },
     ];
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;

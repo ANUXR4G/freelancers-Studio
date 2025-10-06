@@ -157,7 +157,7 @@ const Footer = () => {
                   onMouseMove={(e) => useMagnet(e, 0.8)}
                   onMouseOut={(e) => useResetMagnet(e)}
                 >
-                  <Image src={logohalf} alt="Logo" width={48} height={48} />
+                  <Image alt="Logo" height={48} src={logohalf} width={48} />
                 </Link>
                 <nav>
                   <ul className="flex flex-col gap-4">
@@ -196,9 +196,9 @@ const Footer = () => {
                 <div className="gap-y-default col-span-1 flex flex-col sm:col-span-2">
                   <NewsletterForm
                     animate={false}
+                    className="text-[#ed356d]"
                     hintId="hint-newsletter-footer"
                     isDark={false}
-                    className="text-[#ed356d]"
                   />
                   <Language className="md:ml-auto" isDark={true} />
                 </div>

@@ -35,14 +35,14 @@ export default function ScrollBar() {
 
   return (
     <div className="bg-blur-glass pointer-events-none fixed top-1/2 right-10 z-[500] h-48 w-0.5 -translate-y-1/2">
-      <div ref={progressBarRef} className="bg-[#ed356d] absolute h-full w-0.5">
+      <div ref={progressBarRef} className="absolute h-full w-0.5 bg-[#ed356d]">
         <SafeNumberFlow
-          className="label text-[#ed356d] absolute right-2 -bottom-[19px]"
+          className="label absolute right-2 -bottom-[19px] text-[#ed356d]"
           suffix="%"
           value={Math.min(Math.round(percent * 100), 100)}
         />
         <svg
-          className="stroke-[#ed356d] absolute -right-[3px] -bottom-3"
+          className="absolute -right-[3px] -bottom-3 stroke-[#ed356d]"
           fill="none"
           height="8"
           viewBox="0 0 8 8"

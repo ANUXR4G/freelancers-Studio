@@ -168,18 +168,19 @@ export const QUESTIONS = [
       en: (
         <p>
           We use <span className="text-[#ed356d]">Next.js</span> for performant and scalable sites,{' '}
-          <span className="text-[#ed356d]">GSAP</span> and <span className="text-[#ed356d]">Three.js</span>{' '}
-          for animations and 3D experiences. For content management, we work with{' '}
-          <span className="text-[#ed356d]">Sanity</span>, and sometimes{' '}
-          <span className="text-[#ed356d]">Webflow</span> when the project requires more flexibility.
+          <span className="text-[#ed356d]">GSAP</span> and{' '}
+          <span className="text-[#ed356d]">Three.js</span> for animations and 3D experiences. For
+          content management, we work with <span className="text-[#ed356d]">Sanity</span>, and
+          sometimes <span className="text-[#ed356d]">Webflow</span> when the project requires more
+          flexibility.
         </p>
       ),
       fr: (
         <p>
-          Nous utilisons <span className="text-[#ed356d]">Next.js</span> pour des sites performant et
-          scalables, <span className="text-[#ed356d]">GSAP</span> et{' '}
-          <span className="text-[#ed356d]">Three.js</span> pour des animations et des expériences 3D.
-          Pour la gestion du contenu, nous travaillons avec{' '}
+          Nous utilisons <span className="text-[#ed356d]">Next.js</span> pour des sites performant
+          et scalables, <span className="text-[#ed356d]">GSAP</span> et{' '}
+          <span className="text-[#ed356d]">Three.js</span> pour des animations et des expériences
+          3D. Pour la gestion du contenu, nous travaillons avec{' '}
           <span className="text-[#ed356d]">Sanity</span>, et parfois{' '}
           <span className="text-[#ed356d]">Webflow</span> lorsque le projet nécessite plus de
           flexibilité.

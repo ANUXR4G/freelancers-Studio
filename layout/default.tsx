@@ -32,7 +32,7 @@ const Layout = ({ projects, children }: { projects: ProjectType[]; children: Rea
       <SEO isFrench={isFrench} />
       {isTablet ? <Burger /> : <Menu projects={projects} />}
 
-      <main className="min-h-screen w-screen overflow-hidden md:pb-[300px]">
+      <main className="min-h-screen w-screen overflow-hidden md:pb-[30px]">
         {isLoading ? <div className="fixed z-[9999] h-screen w-screen bg-black" /> : children}
       </main>
       {!isMobile && <ScrollBar />}

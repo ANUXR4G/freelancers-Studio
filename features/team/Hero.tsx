@@ -153,7 +153,7 @@ const Hero = () => {
         <div className="relative">
           <h1
             ref={titleRefs[1]}
-            className="text-[#ed356d] text-right text-[50px] !leading-normal md:!text-[90px]"
+            className="text-right text-[50px] !leading-normal text-[#ed356d] md:!text-[90px]"
           >
             {isFrench ? 'DESIGNER' : 'DESIGNER'}
           </h1>
@@ -174,7 +174,7 @@ const Hero = () => {
         <div className="relative">
           <h1
             ref={titleRefs[3]}
-            className="text-[#ed356d] pr-[25vw] text-right text-[50px] !leading-normal md:!text-[90px]"
+            className="pr-[25vw] text-right text-[50px] !leading-normal text-[#ed356d] md:!text-[90px]"
           >
             {isFrench ? 'SUBLIMER' : 'SUBLIMATE'}
           </h1>

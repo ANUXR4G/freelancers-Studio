@@ -15,27 +15,21 @@ import gsap from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 import { useRef, useState } from 'react';
 
-
 gsap.registerPlugin(SplitText);
-
 
 const Portfolio = () => {
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
 
-
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
 
   const { isFrench, getInternalPath } = useLanguage();
   const isTablet = useMatchMedia(BREAKPOINTS.LG);
   const { contextSafe } = useGSAP();
   const { isAtLeast } = usePerformance();
 
-
   const revealAnimation = contextSafe(() => {
     if (!titleRef.current || !subtitleRef.current) return;
-
 
     const splitTitle = new SplitText(titleRef.current, {
       type: 'chars',
@@ -45,11 +39,9 @@ const Portfolio = () => {
       type: 'words',
     });
 
-
     gsap.set(splitTitle.chars, {
       yPercent: 100,
     });
-
 
     gsap.set(splitSubtitle.words, {
       yPercent: 100,
@@ -58,7 +50,6 @@ const Portfolio = () => {
         filter: 'blur(10px)',
       }),
     });
-
 
     const timeline = gsap
       .timeline({
@@ -85,7 +76,6 @@ const Portfolio = () => {
         '<',
       );
 
-
     if (isTablet) {
       timeline.to(
         [
@@ -104,14 +94,12 @@ const Portfolio = () => {
       return;
     }
 
-
     gsap.set(`#offer-card-${OFFER_TYPE.CUSTOM}`, {
       transformOrigin: 'left center',
     });
     gsap.set(`#offer-card-${OFFER_TYPE.LANDING}`, {
       transformOrigin: 'right center',
     });
-
 
     timeline
       .to(
@@ -139,10 +127,8 @@ const Portfolio = () => {
       );
   });
 
-
   const scrollAnimation = contextSafe(() => {
     if (isTablet) return;
-
 
     gsap
       .timeline({
@@ -173,12 +159,10 @@ const Portfolio = () => {
       );
   });
 
-
   useGSAP(() => {
     scrollAnimation();
     revealAnimation();
   }, [isTablet, isFrench]);
-
 
   const renderCard = (offer: (typeof portfolio)[0]) => {
     const cardElement = (
@@ -195,7 +179,6 @@ const Portfolio = () => {
       />
     );
 
-
     if (isTablet) {
       return (
         <div key={offer.type} id={`wrapper-offer-card-${offer.type}`}>
@@ -203,7 +186,6 @@ const Portfolio = () => {
         </div>
       );
     }
-
 
     return (
       <Div3D
@@ -218,11 +200,10 @@ const Portfolio = () => {
     );
   };
 
-
   return (
     <section className="py-y-default flex flex-col text-center">
       <div className="pt-y-default px-x-default mx-auto md:w-2/3">
-        <h1 ref={titleRef} className="text-[#ed356d] h1 pb-2.5 uppercase">
+        <h1 ref={titleRef} className="h1 pb-2.5 text-[#ed356d] uppercase">
           {isFrench ? 'Offres' : 'portfolio'}
         </h1>
         <p ref={subtitleRef} className="p1">
@@ -245,13 +226,16 @@ const Portfolio = () => {
             ? 'Si vous avez une idée précise de votre besoin, utilisez notre project studio pour nous orienter dans la réflexion :'
             : 'If you have a clear idea of your needs, use our project studio to guide us in our thinking:'}
         </p>
-        <Button className="bg-[#ed356d]" href={getInternalPath('/offer/project-studio')} scroll={false}>
+        <Button
+          className="bg-[#ed356d]"
+          href={getInternalPath('/offer/project-studio')}
+          scroll={false}
+        >
           <span>PROJECT STUDIO</span>
         </Button>
       </div>
     </section>
   );
 };
-
 
 export default Portfolio;

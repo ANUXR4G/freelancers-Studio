@@ -26,7 +26,9 @@ const CardOffer = ({
       id={id}
       className={clsx(
         'flex h-fit w-full max-w-[400px] min-w-[350px] shrink-0 flex-col items-center gap-12 rounded-3xl border-[1px] px-6 py-8 text-center backdrop-blur-lg md:min-w-[320px]',
-        type === OFFER_TYPE.SIMPLE ? 'border-[#ed356d]/70 bg-menu/50' : 'border-[#ed356d]/30 bg-white',
+        type === OFFER_TYPE.SIMPLE
+          ? 'bg-menu/50 border-[#ed356d]/70'
+          : 'border-[#ed356d]/30 bg-white',
         className,
       )}
       style={{
@@ -41,17 +43,14 @@ const CardOffer = ({
             <li
               key={index}
               className={clsx(
-                'p3 flex items-center gap-4 py-2.5 text-left transition-colors xl:gap-7 text-[#ed356d]',
+                'p3 flex items-center gap-4 py-2.5 text-left text-[#ed356d] transition-colors xl:gap-7',
                 hoveredIndex === index ? 'text-[#ed356d]' : 'text-black-30',
                 hoveredIndex === null && 'text-black-70',
               )}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-<IconCheck 
-  className="shrink-0" 
-  style={{ fill: '#ed356d', color: '#ed356d' }} 
-/>
+              <IconCheck className="shrink-0" style={{ fill: '#ed356d', color: '#ed356d' }} />
               <span>{option.title[isFrench ? 'fr' : 'en']}</span>
             </li>
           ))}

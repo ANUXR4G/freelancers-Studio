@@ -151,7 +151,7 @@ const CardFaq = ({
           isActive ? 'opacity-100' : 'opacity-50',
         )}
       >
-        <h2 className="text-[#ed356d] mb-4">{id}.</h2>
+        <h2 className="mb-4 text-[#ed356d]">{id}.</h2>
         <p className="p2">{isFrench ? questionText.fr : questionText.en}</p>
         <div ref={answerRef}>
           <div ref={textAnswerRef} className="p3 text-black-70">

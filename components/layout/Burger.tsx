@@ -207,7 +207,7 @@ const Burger = () => {
             <Sound ref={soundRef} />
             <button
               aria-label="Menu"
-              className="bg-[#ed356d] flex h-11 w-11 cursor-pointer flex-col items-end justify-center gap-2 rounded-full p-3"
+              className="flex h-11 w-11 cursor-pointer flex-col items-end justify-center gap-2 rounded-full bg-[#ed356d] p-3"
               onClick={isMenuOpen ? closeMenu : openMenu}
             >
               <div

@@ -16,15 +16,15 @@ const useISTTime = () => {
       // Get current time in IST (UTC+5:30)
       const now = new Date();
       const istTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
-      
+
       let hours = istTime.getHours();
       const minutes = istTime.getMinutes();
       const period = hours >= 12 ? 'PM' : 'AM';
-      
+
       // Convert to 12-hour format
       hours = hours % 12;
       hours = hours ? hours : 12; // 0 should be 12
-      
+
       setTime({
         hours: hours.toString().padStart(2, '0'),
         minutes: minutes.toString().padStart(2, '0'),
@@ -46,10 +46,8 @@ const Time = ({ isDark = false, className }: { isDark?: boolean; className?: str
 
   return (
     <p className={clsx(isDark ? 'text-white' : 'text-black', className)}>
-      <span>{hours}</span>
-      :
-      <span>{minutes}</span>
-      <span className={clsx('uppercase ml-1', isDark ? 'text-white-30' : 'text-black-30')}>
+      <span>{hours}</span>:<span>{minutes}</span>
+      <span className={clsx('ml-1 uppercase', isDark ? 'text-white-30' : 'text-black-30')}>
         {period}
       </span>
     </p>

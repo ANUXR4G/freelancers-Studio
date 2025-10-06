@@ -64,7 +64,12 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       return;
 
     // Clear any existing animations
-    gsap.killTweensOf([logoRef.current, soundRef.current, contactMenuRef.current, buttonMenuRef.current]);
+    gsap.killTweensOf([
+      logoRef.current,
+      soundRef.current,
+      contactMenuRef.current,
+      buttonMenuRef.current,
+    ]);
 
     // Create timeline for reveal
     const tl = gsap.timeline({
@@ -83,7 +88,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
         opacity: 1,
         duration: 1.2,
         ease: 'power4.out',
-      }
+      },
     );
 
     // Buttons from right with stagger
@@ -100,7 +105,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
         ease: 'power4.out',
         stagger: 0.1,
       },
-      '-=0.9' // Overlap with logo
+      '-=0.9', // Overlap with logo
     );
   });
 
@@ -409,10 +414,10 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
   useGSAP(() => {
     revealAnimation();
     floatingNavAnimation();
-    
+
     return () => {
       // Cleanup
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       if (timelineRef.current) {
         timelineRef.current.kill();
       }
@@ -433,24 +438,18 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
           </p>
         )}
       </Hint>
-      <header 
-        ref={headerRef} 
-        className="fixed top-0 left-0 w-full z-[900] pointer-events-none"
-      >
-        <div className="px-8 py-6 pointer-events-auto">
-          <div
-            ref={floatingNavRef}
-            className="flex items-center justify-between w-full"
-          >
+      <header ref={headerRef} className="pointer-events-none fixed top-0 left-0 z-[900] w-full">
+        <div className="pointer-events-auto px-8 py-6">
+          <div ref={floatingNavRef} className="flex w-full items-center justify-between">
             <Link
               ref={logoRef}
               aria-label="Logo"
               href={getInternalPath('/en')}
               scroll={false}
-              onClick={closeMenu}
               style={{ opacity: 0 }}
+              onClick={closeMenu}
             >
-              <Image src={logo} alt="Metabole Logo" priority height={100} width={120} />
+              <Image alt="Metabole Logo" height={100} src={logo} width={120} priority />
             </Link>
             <div ref={wrapperButtonRef} className="flex gap-4">
               <Sound ref={soundRef} className="shrink-0" isDark={true} style={{ opacity: 0 }} />
@@ -458,18 +457,18 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
                 ref={contactMenuRef}
                 href={getInternalPath('/en/contact')}
                 scroll={false}
+                style={{ opacity: 0 }}
                 transformOrigin="right"
                 onClick={closeMenu}
-                style={{ opacity: 0 }}
               >
                 CONTACT
               </Button>
               <Button
                 ref={buttonMenuRef}
                 isResizable={true}
+                style={{ opacity: 0 }}
                 transformOrigin="right"
                 onClick={isMenuOpen ? closeMenu : openMenu}
-                style={{ opacity: 0 }}
               >
                 {TEXT_BUTTON[isFrench ? 'fr' : 'en'][isMenuOpen ? 'close' : 'open']}
               </Button>
@@ -480,7 +479,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       <CutoutWrapper ref={cutoutRef}>
         <div
           ref={menuRef}
-          className="px-x-default py-y-default gap-y-default bg-[#ed356d]/0 flex h-full w-full flex-col justify-between backdrop-blur-xl bg-white/5 border border-white/10"
+          className="px-x-default py-y-default gap-y-default flex h-full w-full flex-col justify-between border border-white/10 bg-[#ed356d]/0 bg-white/5 backdrop-blur-xl"
         >
           <div />
           <div className="grid grid-cols-10 gap-5">

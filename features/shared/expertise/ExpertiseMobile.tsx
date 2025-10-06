@@ -60,7 +60,7 @@ const ExpertiseMobile = () => {
                   className={
                     'p3 ease-power4-in-out transition-[colors,translate] duration-150 ' +
                     (elementIndex === activeIndex
-                      ? 'text-[#ed356d] translate-y-0'
+                      ? 'translate-y-0 text-[#ed356d]'
                       : 'text-white-30 -translate-x-4')
                   }
                 >

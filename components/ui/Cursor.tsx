@@ -155,7 +155,7 @@ const Cursor = () => {
         <div
           className={clsx(
             'h-16 w-16 rounded-full border-[1px] border-[#ed356d] transition-[transform,scale,background-color]',
-            cursorState === CURSOR_STATE.POINTER && 'bg-[#ed356d] scale-50',
+            cursorState === CURSOR_STATE.POINTER && 'scale-50 bg-[#ed356d]',
             isActive && 'scale-75',
           )}
         ></div>
