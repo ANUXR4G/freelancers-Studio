@@ -99,7 +99,7 @@ function StepsCardInner(): JSX.Element {
         <motion.div
           key={s.n}
           animate={{ opacity: 1, y: 0 }}
-          className="relative flex flex-1 flex-col items-center justify-end rounded-lg border border-gray-200 bg-white text-center shadow-sm transition-all"
+          className="relative flex flex-1 flex-col items-center justify-end rounded-lg border border-gray-200 bg-white hover:bg-[#ed356d] hover:text-white text-center shadow-sm transition-all"
           initial={{ opacity: 0, y: 24 }}
           style={{ height: s.h }}
           transition={{
