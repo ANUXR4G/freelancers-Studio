@@ -64,7 +64,7 @@ export default function GalleryOne() {
               src={img}
               width={160}
               height={120}
-              className="banner-img"
+              className="banner-img px-4"
               priority={idx < 3}
             />
           ))}
