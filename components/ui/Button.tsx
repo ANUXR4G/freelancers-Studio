@@ -262,8 +262,8 @@ const Button = forwardRef<HTMLDivElement, ButtonProps>(
             'label inline-block h-11 w-fit cursor-pointer overflow-hidden rounded-full uppercase transition-colors duration-200',
             color === 'primary' && 'bg-menu text-white hover:bg-[#ed356d] hover:text-white',
             color === 'primary' && isDark && 'text-white hover:text-white',
-            color === 'secondary' && 'bg-[#ed356d] text-white hover:bg-black hover:text-white',
-            color === 'tertiary' && 'bg-yellow text-white hover:bg-black hover:text-white',
+            color === 'secondary' && 'bg-[#ed356d] text-white hover:bg-[#ed356d] hover:text-white',
+            color === 'tertiary' && 'bg-[#ed356d] text-white hover:bg-[#ed356d] hover:text-white',
             `origin-${transformOrigin}`,
             disabled ? 'cursor-default! opacity-70' : 'cursor-pointer',
             className,
@@ -304,7 +304,7 @@ const Button = forwardRef<HTMLDivElement, ButtonProps>(
                 background: `conic-gradient(from 90deg at 50% 50%, ${borderColors[0]} 0%, ${borderColors[1]} 50%, ${borderColors[2]} 100%)`,
               }}
             />
-            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white uppercase backdrop-blur-3xl">
+            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-[#ed356d] px-3 py-1 text-sm font-medium text-white uppercase backdrop-blur-3xl">
               {children}
             </span>
           </DynamicElement>
