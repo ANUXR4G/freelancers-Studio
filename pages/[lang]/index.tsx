@@ -1,11 +1,12 @@
 import FloatingHalo from '@/components/shared/FloatingHalo';
+import CustomBento from '@/components/ui/custombento';
 import ImageScreen from '@/components/ui/imagescreen';
+import LetsTalk from '@/components/ui/letstalk';
 import Hero from '@/features/home/Hero';
 import Philosophy from '@/features/home/Philosophy';
 import Expertise from '@/features/shared/expertise/Expertise';
 import Faq from '@/features/shared/Faq';
 import Timeline from '@/features/shared/timeline/Timeline';
-import Us from '@/features/team/Us';
 
 export default function Home() {
   return (
@@ -20,9 +21,8 @@ export default function Home() {
       <Philosophy />
       <Expertise />
       <Timeline />
-      <Us />
-      {/* <TrustedBy /> */}
-      <Faq />
+      <CustomBento />      {/* <TrustedBy /> */}
+      <LetsTalk />
     </div>
   );
 }

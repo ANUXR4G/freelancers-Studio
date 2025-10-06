@@ -245,9 +245,9 @@ const Hero = () => {
           </span>
         )}
       </h1>
-      <div className="pt-y-default flex gap-4">
+      <div className="justify-center flex gap-4 pt-20">
         <Button 
-          className="bg-gradient-to-r from-[#ed356d] to-[#c92a5a] hover:bg-gradient-to-br text-white" 
+          className="bg-gradient-to-r from-[#ed356d] to-[#c92a5a] hover:bg-gradient-to-br text-7xl text-white" 
           href={getInternalPath('/en/contact')} 
           scroll={false}
         >

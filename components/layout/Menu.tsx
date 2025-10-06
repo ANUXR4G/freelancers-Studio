@@ -15,7 +15,6 @@ import Time from '../shared/Time';
 import AnimatedLink from '../ui/AnimatedLink';
 import Button from '../ui/Button';
 import Hint from '../ui/Hint';
-import { LogoFull } from '../ui/Icons';
 import Tag, { AnimatedTagRef } from '../ui/Tag';
 import CutoutWrapper, { AnimatedCutoutWrapperRef } from './CutoutWrapper';
 import logo from '@/public/logo-full.png';
@@ -38,6 +37,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
   const SLICED_PROJECTS = projects.slice(0, 6);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const floatingNavRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef(null);
   const soundRef = useRef(null);
   const headerRef = useRef<HTMLElement>(null);
@@ -54,7 +54,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
   const socialsRef = useRef<HTMLUListElement>(null);
   const infosRef = useRef<HTMLDivElement>(null);
 
-  const timelineRef = useRef<gsap.core.Timeline>(gsap.timeline());
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   const { isFrench, getInternalPath } = useLanguage();
   const { contextSafe } = useGSAP();
@@ -63,101 +63,105 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
     if (!logoRef.current || !soundRef.current || !contactMenuRef.current || !buttonMenuRef.current)
       return;
 
-    gsap.set([logoRef.current, soundRef.current, contactMenuRef.current, buttonMenuRef.current], {
-      y: -100,
-      scale: 0.7,
+    // Clear any existing animations
+    gsap.killTweensOf([logoRef.current, soundRef.current, contactMenuRef.current, buttonMenuRef.current]);
+
+    // Create timeline for reveal
+    const tl = gsap.timeline({
+      delay: 1.2,
     });
 
-    gsap
-      .timeline({
-        delay: 1.4,
-      })
-      .to([logoRef.current, soundRef.current, contactMenuRef.current, buttonMenuRef.current], {
+    // Logo from left
+    tl.fromTo(
+      logoRef.current,
+      {
+        x: -200,
+        opacity: 0,
+      },
+      {
+        x: 0,
+        opacity: 1,
         duration: 1.2,
         ease: 'power4.out',
-        stagger: 0.05,
-        y: 0,
-        scale: 1,
-      });
+      }
+    );
+
+    // Buttons from right with stagger
+    tl.fromTo(
+      [soundRef.current, contactMenuRef.current, buttonMenuRef.current],
+      {
+        x: 200,
+        opacity: 0,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: 'power4.out',
+        stagger: 0.1,
+      },
+      '-=0.9' // Overlap with logo
+    );
   });
 
-  const centerHeaderOnScroll = contextSafe(() => {
-    if (!headerInnerRef.current || !logoRef.current || !wrapperButtonRef.current) return;
+  const floatingNavAnimation = contextSafe(() => {
+    if (!floatingNavRef.current || !logoRef.current || !wrapperButtonRef.current) return;
 
     ScrollTrigger.create({
       trigger: 'body',
-      start: 'top top',
+      start: 'top+=100 top',
       end: '+=1',
       onEnter: () => {
-        // Calculate center position
-        const headerWidth = headerInnerRef.current.offsetWidth;
-        const logoWidth = logoRef.current.offsetWidth;
-        const buttonsWidth = wrapperButtonRef.current.offsetWidth;
-        
-        // Calculate the total width of content
-        const totalContentWidth = logoWidth + buttonsWidth;
-        
-        // Calculate the gap we want between logo and buttons (1rem = 16px)
-        const gap = 16;
-        
-        // Calculate how much we need to move each element
-        const centerPoint = headerWidth / 2;
-        const contentStartPoint = centerPoint - (totalContentWidth + gap) / 2;
-        
-        // Get current positions
-        const logoRect = logoRef.current.getBoundingClientRect();
-        const buttonsRect = wrapperButtonRef.current.getBoundingClientRect();
-        const headerRect = headerInnerRef.current.getBoundingClientRect();
-        
-        // Calculate movement needed (relative to header)
-        const logoMove = contentStartPoint - (logoRect.left - headerRect.left);
-        const buttonsMove = (contentStartPoint + logoWidth + gap) - (buttonsRect.left - headerRect.left);
-
-        // Animate both elements
-        gsap.to(logoRef.current, {
-          x: logoMove,
-          duration: 0.8,
-          ease: 'power3.out',
+        gsap.to(floatingNavRef.current, {
+          position: 'fixed',
+          left: '50%',
+          x: '-50%',
+          top: 20,
+          width: 'auto',
+          maxWidth: '90vw',
+          padding: '10px 24px',
+          backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(20px)',
+          borderRadius: '3rem',
+          boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.1)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          justifyContent: 'center',
+          gap: '1.5rem',
+          duration: 0.7,
+          ease: 'power2.inOut',
         });
 
-        gsap.to(wrapperButtonRef.current, {
-          x: buttonsMove,
-          duration: 0.8,
-          ease: 'power3.out',
+        gsap.to(logoRef.current, {
+          scale: 0.8,
+          duration: 0.7,
+          ease: 'power2.inOut',
         });
       },
       onLeaveBack: () => {
-        // Reset to original positions
-        gsap.to([logoRef.current, wrapperButtonRef.current], {
+        gsap.to(floatingNavRef.current, {
+          position: 'relative',
+          left: 'auto',
           x: 0,
-          duration: 0.8,
-          ease: 'power3.out',
+          top: 0,
+          width: '100%',
+          maxWidth: 'none',
+          padding: '0px',
+          backgroundColor: 'transparent',
+          backdropFilter: 'blur(0px)',
+          borderRadius: '0px',
+          boxShadow: 'none',
+          border: 'none',
+          justifyContent: 'space-between',
+          gap: '0rem',
+          duration: 0.7,
+          ease: 'power2.inOut',
         });
-      },
-    });
-  });
 
-  const hideShowHeaderOnScroll = contextSafe(() => {
-    if (!headerRef.current) return;
-
-    const showAnim = gsap
-      .from(headerRef.current, {
-        yPercent: -100,
-        paused: true,
-        duration: 0.3,
-      })
-      .progress(1);
-
-    ScrollTrigger.create({
-      start: 'top top',
-      end: 'max',
-      onUpdate: (self) => {
-        // -1 = scrolling up, 1 = scrolling down
-        if (self.direction === -1) {
-          showAnim.play();
-        } else {
-          showAnim.reverse();
-        }
+        gsap.to(logoRef.current, {
+          scale: 1,
+          duration: 0.7,
+          ease: 'power2.inOut',
+        });
       },
     });
   });
@@ -171,6 +175,11 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       !infosRef.current
     )
       return;
+
+    // Kill any existing timeline
+    if (timelineRef.current) {
+      timelineRef.current.kill();
+    }
 
     timelineRef.current = gsap
       .timeline()
@@ -253,8 +262,10 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
         '-=1.3',
       )
       .add(() => {
-        projectTagsRefs.current.map((ref, index) => {
-          gsap.delayedCall(index * 0.1, () => ref.play());
+        projectTagsRefs.current.forEach((ref, index) => {
+          if (ref) {
+            gsap.delayedCall(index * 0.1, () => ref.play());
+          }
         });
       }, '-=1')
       .add(() => {
@@ -292,6 +303,11 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
     )
       return;
 
+    // Kill any existing timeline
+    if (timelineRef.current) {
+      timelineRef.current.kill();
+    }
+
     timelineRef.current = gsap
       .timeline()
       .set([linksRef.current, socialsRef.current], {
@@ -320,8 +336,10 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
         '<',
       )
       .add(() => {
-        projectTagsRefs.current.map((ref, index) => {
-          gsap.delayedCall(index * 0.05, () => ref.reverse());
+        projectTagsRefs.current.forEach((ref, index) => {
+          if (ref) {
+            gsap.delayedCall(index * 0.05, () => ref.reverse());
+          }
         });
       }, '<')
       .add(() => {
@@ -390,12 +408,14 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
 
   useGSAP(() => {
     revealAnimation();
-    centerHeaderOnScroll();
-    hideShowHeaderOnScroll();
+    floatingNavAnimation();
     
-    // Cleanup on unmount
     return () => {
+      // Cleanup
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      if (timelineRef.current) {
+        timelineRef.current.kill();
+      }
     };
   }, []);
 
@@ -413,43 +433,54 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
           </p>
         )}
       </Hint>
-      <header ref={headerRef} className="px-x-default fixed z-[900] w-full">
-        <div ref={headerInnerRef} className="flex items-center justify-between py-8">
-          <Link
-            ref={logoRef}
-            aria-label="Logo"
-            href={getInternalPath('/en')}
-            scroll={false}
-            onClick={closeMenu}
+      <header 
+        ref={headerRef} 
+        className="fixed top-0 left-0 w-full z-[900] pointer-events-none"
+      >
+        <div className="px-8 py-6 pointer-events-auto">
+          <div
+            ref={floatingNavRef}
+            className="flex items-center justify-between w-full"
           >
-            <Image src={logo} alt="Metabole Logo" priority height={130} width={160} />
-          </Link>
-          <div ref={wrapperButtonRef} className="flex gap-4">
-            <Sound ref={soundRef} className="shrink-0" isDark={true} />
-            <Button
-              ref={contactMenuRef}
-              href={getInternalPath('/en/contact')}
+            <Link
+              ref={logoRef}
+              aria-label="Logo"
+              href={getInternalPath('/en')}
               scroll={false}
-              transformOrigin="right"
               onClick={closeMenu}
+              style={{ opacity: 0 }}
             >
-              CONTACT
-            </Button>
-            <Button
-              ref={buttonMenuRef}
-              isResizable={true}
-              transformOrigin="right"
-              onClick={isMenuOpen ? closeMenu : openMenu}
-            >
-              {TEXT_BUTTON[isFrench ? 'fr' : 'en'][isMenuOpen ? 'close' : 'open']}
-            </Button>
+              <Image src={logo} alt="Metabole Logo" priority height={100} width={120} />
+            </Link>
+            <div ref={wrapperButtonRef} className="flex gap-4">
+              <Sound ref={soundRef} className="shrink-0" isDark={true} style={{ opacity: 0 }} />
+              <Button
+                ref={contactMenuRef}
+                href={getInternalPath('/en/contact')}
+                scroll={false}
+                transformOrigin="right"
+                onClick={closeMenu}
+                style={{ opacity: 0 }}
+              >
+                CONTACT
+              </Button>
+              <Button
+                ref={buttonMenuRef}
+                isResizable={true}
+                transformOrigin="right"
+                onClick={isMenuOpen ? closeMenu : openMenu}
+                style={{ opacity: 0 }}
+              >
+                {TEXT_BUTTON[isFrench ? 'fr' : 'en'][isMenuOpen ? 'close' : 'open']}
+              </Button>
+            </div>
           </div>
         </div>
       </header>
       <CutoutWrapper ref={cutoutRef}>
         <div
           ref={menuRef}
-          className="px-x-default py-y-default gap-y-default bg-[#ed356d]/0 flex h-full w-full flex-col justify-between"
+          className="px-x-default py-y-default gap-y-default bg-[#ed356d]/0 flex h-full w-full flex-col justify-between backdrop-blur-xl bg-white/5 border border-white/10"
         >
           <div />
           <div className="grid grid-cols-10 gap-5">

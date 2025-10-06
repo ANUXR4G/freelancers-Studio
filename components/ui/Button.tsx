@@ -309,7 +309,7 @@ const Button = forwardRef<HTMLDivElement, ButtonProps>(
           />
           <div
             ref={buttonRef}
-            className="z-20 flex h-full w-full items-center bg-[#ed356d] text-white"
+            className="z-20 flex h-full w-full items-center bg-[#ed356d] text-white text-[17px]"
             onMouseMove={(e) => useMagnet(e, 0.4)}
             onMouseOut={(e) => useResetMagnet(e)}
           >
