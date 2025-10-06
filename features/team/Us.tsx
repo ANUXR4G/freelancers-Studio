@@ -129,7 +129,8 @@ const Us = ({ isPageTeam = false }: { isPageTeam?: boolean }) => {
         {isFrench ? <span>NOS FONDATEURS</span> : <span>OUR FOUNDERS</span>}
         <IconCross className="absolute -right-10 bottom-0 hidden md:block" color={COLORS.BLACK} />
       </h1>
-      <div className="lg:px-x-default relative flex flex-col gap-5 md:flex-row md:pb-[200px]">
+      {/* Updated container with justify-center and items-center for centering */}
+      <div className="lg:px-x-default relative flex flex-col gap-5 md:flex-row md:pb-[200px] justify-center items-center">
         <IconCross className="left-x-default absolute -bottom-20 hidden md:block" color="#ed356d" />
         {TEAM_MEMBERS.map((member, index) => (
           <CardUs
