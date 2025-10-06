@@ -84,15 +84,16 @@ const Faq = () => {
           {columns.map((column, columnIndex) => (
             <div key={columnIndex} className="flex flex-col gap-5">
               {column.map(({ question, originalIndex }) => (
-                <CardFaq
-                  key={originalIndex}
-                  isActive={hoveredIndex === undefined || hoveredIndex === originalIndex}
-                  isOpen={activeIndex === originalIndex}
-                  question={question}
-                  onMouseEnter={() => handleMouseEnter(originalIndex)}
-                  onMouseLeave={handleMouseLeave}
-                  onToggle={() => handleToggle(originalIndex)}
-                />
+                <div key={originalIndex} className="opacity-80">
+                  <CardFaq
+                    isActive={hoveredIndex === undefined || hoveredIndex === originalIndex}
+                    isOpen={activeIndex === originalIndex}
+                    question={question}
+                    onMouseEnter={() => handleMouseEnter(originalIndex)}
+                    onMouseLeave={handleMouseLeave}
+                    onToggle={() => handleToggle(originalIndex)}
+                  />
+                </div>
               ))}
             </div>
           ))}
