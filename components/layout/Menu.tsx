@@ -137,6 +137,31 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
     });
   });
 
+  const hideShowHeaderOnScroll = contextSafe(() => {
+    if (!headerRef.current) return;
+
+    const showAnim = gsap
+      .from(headerRef.current, {
+        yPercent: -100,
+        paused: true,
+        duration: 0.3,
+      })
+      .progress(1);
+
+    ScrollTrigger.create({
+      start: 'top top',
+      end: 'max',
+      onUpdate: (self) => {
+        // -1 = scrolling up, 1 = scrolling down
+        if (self.direction === -1) {
+          showAnim.play();
+        } else {
+          showAnim.reverse();
+        }
+      },
+    });
+  });
+
   const openMenu = contextSafe(() => {
     if (
       !cutoutRef.current ||
@@ -366,6 +391,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
   useGSAP(() => {
     revealAnimation();
     centerHeaderOnScroll();
+    hideShowHeaderOnScroll();
     
     // Cleanup on unmount
     return () => {
