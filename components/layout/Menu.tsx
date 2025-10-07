@@ -440,7 +440,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       </Hint>
       <header ref={headerRef} className="pointer-events-none fixed top-0 left-0 z-[900] w-full">
         <div className="pointer-events-auto px-8 py-6">
-          <div ref={floatingNavRef} className="flex w-full items-center justify-between">
+          <div ref={floatingNavRef} className="flex w-full items-center justify-between px-4">
             <Link
               ref={logoRef}
               aria-label="Logo"
