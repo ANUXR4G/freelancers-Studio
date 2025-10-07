@@ -6,7 +6,7 @@ import { useMatchMedia } from '@/hooks/useCheckScreenSize';
 import { PERFORMANCE_LEVEL } from '@/hooks/usePerformance';
 import { useLanguage } from '@/providers/language.provider';
 import { usePerformance } from '@/providers/performance.provider';
-import { BREAKPOINTS, COLORS } from '@/types';
+import { BREAKPOINTS } from '@/types';
 import { useGSAP } from '@gsap/react';
 import clsx from 'clsx';
 import { gsap } from 'gsap';

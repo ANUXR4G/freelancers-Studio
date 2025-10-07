@@ -12,8 +12,9 @@ import { useRef, useState } from 'react';
 import Language from '../shared/Language';
 import Sound from '../shared/Sound';
 import Time from '../shared/Time';
-import { LogoSmall } from '../ui/Icons';
+import logohalf from '../../public/logo-half.png';
 import { PERFORMANCE_LEVEL } from '@/hooks/usePerformance';
+import Image from 'next/image';
 
 const Burger = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -201,7 +202,7 @@ const Burger = () => {
       <header className="px-x-default fixed z-[900] w-full">
         <div className="flex w-full items-center justify-between py-8">
           <Link className="shrink-0" href={getInternalPath('/')} scroll={false}>
-            <LogoSmall className="h-10 w-10" />
+            <Image src={logohalf} alt="Metabole" width={30} height={40} />
           </Link>
           <div className="flex gap-4">
             <Sound ref={soundRef} />

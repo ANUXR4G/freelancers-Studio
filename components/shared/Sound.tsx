@@ -38,11 +38,11 @@ const Sound = forwardRef<HTMLDivElement, { className?: string; isDark?: boolean 
         onMouseOut={useResetMagnet}
       >
         <div
-          className="flex h-full w-full items-center justify-center p-2.5"
+          className="flex h-full w-full items-center justify-center p-2.5 bg-[#ed356d] rounded-full"
           onMouseMove={(e) => useMagnet(e, 0.4)}
           onMouseOut={useResetMagnet}
         >
-          <Wave ref={animatedWaveRef} color={isDark ? COLORS.WHITE : COLORS.BLUE} />
+          <Wave ref={animatedWaveRef} color={isDark ? COLORS.WHITE : COLORS.WHITE} />
         </div>
       </div>
     );
