@@ -17,11 +17,13 @@ import gsap from 'gsap';
 import { useSearchParams } from 'next/navigation';
 import { useRef, useState } from 'react';
 
+
 const ContactForm = ({ className }: { className?: string }) => {
   const searchParams = useSearchParams();
   const type = searchParams.get('type');
   const { play: playError } = useAudio('/sounds/error.mp3');
   const { play: playSuccess } = useAudio('/sounds/sent.mp3');
+
 
   const formRef = useRef<HTMLFormElement>(null);
   const nameInputRef = useRef<AnimatedInputRef>(null);
@@ -32,8 +34,10 @@ const ContactForm = ({ className }: { className?: string }) => {
   const checkboxRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
 
+
   const { contextSafe } = useGSAP();
   const { isAtLeast } = usePerformance();
+
 
   const [formData, setFormData] = useState<ContactFormState>({
     name: '',
@@ -44,14 +48,17 @@ const ContactForm = ({ className }: { className?: string }) => {
     consentMarketing: false,
   });
 
+
   const [errors, setErrors] = useState({
     name: '',
     email: '',
     type: '',
   });
 
+
   const [formStatus, setFormStatus] = useState(FORM_STATUS.DEFAULT);
   const { isFrench } = useLanguage();
+
 
   const revealAnimation = contextSafe(() => {
     nameInputRef.current?.reset();
@@ -60,6 +67,7 @@ const ContactForm = ({ className }: { className?: string }) => {
     typeInputRef.current?.reset();
     messageInputRef.current?.reset();
 
+
     gsap.set(checkboxRef.current, { y: 30, opacity: 0 });
     gsap.set(buttonRef.current, {
       ...(isAtLeast(PERFORMANCE_LEVEL.MEDIUM) && {
@@ -67,6 +75,7 @@ const ContactForm = ({ className }: { className?: string }) => {
       }),
       opacity: 0,
     });
+
 
     gsap
       .timeline({
@@ -92,9 +101,11 @@ const ContactForm = ({ className }: { className?: string }) => {
       );
   });
 
+
   useGSAP(() => {
     revealAnimation();
   }, []);
+
 
   const sendContact = useMutation({
     mutationFn: ({ name, email, phone, message, type, consentMarketing, lang }: ContactFormData) =>
@@ -115,6 +126,7 @@ const ContactForm = ({ className }: { className?: string }) => {
     },
   });
 
+
   const resetForm = () => {
     setFormData({
       name: '',
@@ -126,6 +138,7 @@ const ContactForm = ({ className }: { className?: string }) => {
     });
   };
 
+
   const resetErrors = () => {
     setErrors({
       name: '',
@@ -134,11 +147,14 @@ const ContactForm = ({ className }: { className?: string }) => {
     });
   };
 
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     resetErrors();
 
+
     let hasErrors = false;
+
 
     if (!formData.name) {
       setErrors((prev) => ({
@@ -147,6 +163,7 @@ const ContactForm = ({ className }: { className?: string }) => {
       }));
       hasErrors = true;
     }
+
 
     if (!formData.email) {
       setErrors((prev) => ({
@@ -162,6 +179,7 @@ const ContactForm = ({ className }: { className?: string }) => {
       hasErrors = true;
     }
 
+
     if (!formData.type || formData.type === CONTACT_TYPE_VALUES.DEFAULT) {
       setErrors((prev) => ({
         ...prev,
@@ -169,6 +187,7 @@ const ContactForm = ({ className }: { className?: string }) => {
       }));
       hasErrors = true;
     }
+
 
     if (!hasErrors) {
       sendContact.mutate({
@@ -178,6 +197,7 @@ const ContactForm = ({ className }: { className?: string }) => {
     }
   };
 
+
   const getButtonText = () => {
     const texts = {
       SUCCESS: isFrench ? 'Envoyé' : 'Sent',
@@ -186,14 +206,20 @@ const ContactForm = ({ className }: { className?: string }) => {
       PENDING: isFrench ? 'Envoi...' : 'Sending...',
     };
 
+
     return texts[formStatus] || texts.DEFAULT;
   };
+
 
   return (
     <form
       ref={formRef}
       className={clsx(
-        'border-blue-30 bg-blur-glass flex flex-col gap-6 rounded-3xl border-[1px] p-9 backdrop-blur-xl',
+        'flex flex-col gap-6 rounded-3xl border-[1px] border-[#ed356d] bg-[#ed356d]/30 p-9 backdrop-blur-xl',
+        '[&_input]:!text-black [&_input]:!border-b-white [&_input]:focus:!border-b-white',
+        '[&_select]:!text-black [&_select]:!border-b-white [&_select]:focus:!border-b-white',
+        '[&_textarea]:!text-black [&_textarea]:!border-b-white [&_textarea]:focus:!border-b-white',
+        '[&_input]:placeholder:!text-black/40 [&_select]:placeholder:!text-black/40 [&_textarea]:placeholder:!text-black/40',
         className,
       )}
       onSubmit={handleSubmit}
@@ -224,6 +250,7 @@ const ContactForm = ({ className }: { className?: string }) => {
         }}
       />
 
+
       <Input
         ref={emailInputRef}
         errorMessage={errors.email}
@@ -252,6 +279,7 @@ const ContactForm = ({ className }: { className?: string }) => {
         }}
       />
 
+
       <Input
         ref={phoneInputRef}
         isDark={true}
@@ -261,6 +289,7 @@ const ContactForm = ({ className }: { className?: string }) => {
         value={formData.phone}
         onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
       />
+
 
       <Input
         ref={typeInputRef}
@@ -281,10 +310,12 @@ const ContactForm = ({ className }: { className?: string }) => {
         onChange={(e) => {
           const newType = e.target.value as ContactType;
 
+
           setFormData((prev) => ({
             ...prev,
             type: newType,
           }));
+
 
           if (newType !== CONTACT_TYPE_VALUES.DEFAULT) {
             setErrors((prev) => ({ ...prev, type: '' }));
@@ -313,6 +344,7 @@ const ContactForm = ({ className }: { className?: string }) => {
         <option value={CONTACT_TYPE_VALUES.OTHER}>{isFrench ? 'Autre' : 'Other'}</option>
       </Input>
 
+
       <Input
         ref={messageInputRef}
         isDark={true}
@@ -322,6 +354,7 @@ const ContactForm = ({ className }: { className?: string }) => {
         value={formData.message}
         onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
       />
+
 
       <div className="overflow-hidden">
         <div ref={checkboxRef}>
@@ -340,6 +373,7 @@ const ContactForm = ({ className }: { className?: string }) => {
         </div>
       </div>
 
+
       <div ref={buttonRef} className="origin-left pt-4">
         <Button
           color="primary"
@@ -352,5 +386,6 @@ const ContactForm = ({ className }: { className?: string }) => {
     </form>
   );
 };
+
 
 export default ContactForm;

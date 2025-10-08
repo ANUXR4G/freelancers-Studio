@@ -33,10 +33,10 @@ const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
             onChange={handleChange}
             {...props}
           />
-          <div className="border-blue flex h-4 w-4 items-center justify-center rounded-sm border-2">
+          <div className="border-[#ed356d] flex h-4 w-4 items-center justify-center rounded-sm border-2">
             <div
               className={clsx(
-                'bg-blue ease-power4-in-out h-2 w-2 rounded-[2px] transition-transform duration-300',
+                'bg-[#ed356d] ease-power4-in-out h-2 w-2 rounded-[2px] transition-transform duration-300',
                 isChecked ? 'scale-100' : 'scale-0 group-hover/checkbox:scale-50',
               )}
             />
