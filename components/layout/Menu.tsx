@@ -19,8 +19,10 @@ import Tag, { AnimatedTagRef } from '../ui/Tag';
 import CutoutWrapper, { AnimatedCutoutWrapperRef } from './CutoutWrapper';
 import logo from '@/public/logo-full.png';
 
+
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
+
 
 const TEXT_BUTTON = {
   fr: {
@@ -33,9 +35,11 @@ const TEXT_BUTTON = {
   },
 };
 
+
 const Menu = ({ projects }: { projects: ProjectType[] }) => {
   const SLICED_PROJECTS = projects.slice(0, 6);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
 
   const floatingNavRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef(null);
@@ -54,14 +58,18 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
   const socialsRef = useRef<HTMLUListElement>(null);
   const infosRef = useRef<HTMLDivElement>(null);
 
+
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
+
 
   const { isFrench, getInternalPath } = useLanguage();
   const { contextSafe } = useGSAP();
 
+
   const revealAnimation = contextSafe(() => {
     if (!logoRef.current || !soundRef.current || !contactMenuRef.current || !buttonMenuRef.current)
       return;
+
 
     // Clear any existing animations
     gsap.killTweensOf([
@@ -71,10 +79,12 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       buttonMenuRef.current,
     ]);
 
+
     // Create timeline for reveal
     const tl = gsap.timeline({
       delay: 1.2,
     });
+
 
     // Logo from left
     tl.fromTo(
@@ -90,6 +100,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
         ease: 'power4.out',
       },
     );
+
 
     // Buttons from right with stagger
     tl.fromTo(
@@ -109,8 +120,10 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
     );
   });
 
+
   const floatingNavAnimation = contextSafe(() => {
     if (!floatingNavRef.current || !logoRef.current || !wrapperButtonRef.current) return;
+
 
     ScrollTrigger.create({
       trigger: 'body',
@@ -135,6 +148,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
           duration: 0.7,
           ease: 'power2.inOut',
         });
+
 
         gsap.to(logoRef.current, {
           scale: 0.8,
@@ -162,6 +176,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
           ease: 'power2.inOut',
         });
 
+
         gsap.to(logoRef.current, {
           scale: 1,
           duration: 0.7,
@@ -170,6 +185,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       },
     });
   });
+
 
   const openMenu = contextSafe(() => {
     if (
@@ -181,10 +197,12 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
     )
       return;
 
+
     // Kill any existing timeline
     if (timelineRef.current) {
       timelineRef.current.kill();
     }
+
 
     timelineRef.current = gsap
       .timeline()
@@ -298,6 +316,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       );
   });
 
+
   const closeMenu = contextSafe(() => {
     if (
       !cutoutRef.current ||
@@ -308,10 +327,12 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
     )
       return;
 
+
     // Kill any existing timeline
     if (timelineRef.current) {
       timelineRef.current.kill();
     }
+
 
     timelineRef.current = gsap
       .timeline()
@@ -409,11 +430,14 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       });
   });
 
+
   useShortcut('Escape', () => isMenuOpen && closeMenu());
+
 
   useGSAP(() => {
     revealAnimation();
     floatingNavAnimation();
+
 
     return () => {
       // Cleanup
@@ -423,6 +447,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       }
     };
   }, []);
+
 
   return (
     <>
@@ -479,7 +504,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       <CutoutWrapper ref={cutoutRef}>
         <div
           ref={menuRef}
-          className="px-x-default py-y-default gap-y-default flex h-full w-full flex-col justify-between border border-white/10 bg-[#ed356d]/0 bg-white/5 backdrop-blur-xl"
+          className="flex h-full w-full flex-col justify-between gap-8 border border-white/10 bg-[#ed356d]/0 bg-white/5 px-8 py-8 backdrop-blur-xl md:gap-12 md:px-16 md:py-16 lg:px-24 lg:py-24"
         >
           <div />
           <div className="grid grid-cols-10 gap-5">
@@ -546,7 +571,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
                 hintId="hint-newsletter-menu"
                 isDark={true}
               />
-              <nav className="pt-y-default text-right">
+              <nav className="pt-8 text-right md:pt-12 lg:pt-16">
                 <ul ref={socialsRef} className="flex flex-col items-end gap-4 overflow-hidden">
                   <li className="p3 text-black hover:text-[#ed356d]">Socials</li>
                   {SOCIALS.map((link, index) => (
@@ -584,5 +609,6 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
     </>
   );
 };
+
 
 export default Menu;
