@@ -1,8 +1,7 @@
+import CustomBento from '@/components/ui/custombento';
 import Hero from '@/features/services/Hero';
 import Expertise from '@/features/shared/expertise/Expertise';
-import Faq from '@/features/shared/Faq';
 import Timeline from '@/features/shared/timeline/Timeline';
-import Us from '@/features/team/Us';
 import { fetchProjects } from '@/services/projects.service';
 
 export default function Services() {
@@ -11,8 +10,7 @@ export default function Services() {
       <Hero />
       <Expertise isPageServices={true} />
       <Timeline />
-      <Us />
-      <Faq />
+      <CustomBento />
     </>
   );
 }

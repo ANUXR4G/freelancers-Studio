@@ -1,5 +1,5 @@
 export const CONTACT = {
   EMAIL: 'freelancerstudio.in@gmail.com',
-  ADDRESS: 'Mumbai | India',
+  ADDRESS: 'Pune | Mumbai | Jalgaon | India',
   PHONE: '+91 70833 39687',
 };

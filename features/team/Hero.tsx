@@ -159,7 +159,7 @@ const Hero = () => {
           </h1>
           <IconCross
             className="absolute top-1/2 -left-10 hidden -translate-y-1/2 md:block"
-            color={COLORS.BLACK}
+            color="#ed356d"
           />
         </div>
         <div className="relative">
@@ -180,7 +180,7 @@ const Hero = () => {
           </h1>
           <IconCross
             className="absolute -right-10 -bottom-10 hidden md:block"
-            color={COLORS.BLACK}
+            color="#ed356d"
           />
         </div>
         <div
@@ -188,7 +188,7 @@ const Hero = () => {
           className="px-x-default pt-y-double-default pb-y-default absolute top-0 left-0 h-screen w-screen scale-0"
         >
           <Image
-            alt="Matteo and Jerome"
+            alt="Shubham & Spandan"
             className="h-full w-full rounded-3xl object-cover object-top"
             height={1920}
             id="hint-team-hero"

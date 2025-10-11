@@ -57,7 +57,7 @@ const Expertise = ({ isPageServices = false }: { isPageServices?: boolean }) => 
       />
       <h1 ref={titleRef} className="relative w-fit text-white">
         {isFrench ? <span>NOS EXPERTISES</span> : <span>OUR EXPERTISES</span>}
-        <IconCross className="absolute -right-10 bottom-0 hidden md:block" color={COLORS.WHITE} />
+        <IconCross className="absolute -right-10 bottom-0 hidden md:block" color="#ed356d" />
       </h1>
       <div className="py-y-default overflow-hidden">
         {isMobile ? <ExpertiseMobile /> : <ExpertiseDesktop />}

@@ -76,7 +76,7 @@ const Fragement = () => {
             />
           </div>
           <div className="flex h-full w-full items-center justify-center">
-            <IconCross color={COLORS.BLUE} />
+            <IconCross color="#ed356d" />
           </div>
         </div>
       ))}
