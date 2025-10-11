@@ -192,7 +192,7 @@ const Hero = () => {
             className="h-full w-full rounded-3xl object-cover object-top"
             height={1920}
             id="hint-team-hero"
-            src="/images/matteo-and-jerome.png"
+            src="/group.png"
             width={1080}
             priority
           />
