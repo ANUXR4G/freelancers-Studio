@@ -133,107 +133,140 @@ const Hero = () => {
   return (
     <section
       ref={sectionRef}
-      className="px-x-default pb-y-default flex w-screen flex-col justify-evenly pt-[calc(var(--y-default)*3)] md:min-h-[70vh]"
+      className="px-x-default pb-y-default flex w-screen flex-col justify-evenly pt-[calc(var(--y-default)*3)] md:min-h-[70vh] overflow-x-hidden"
     >
-      <h1 className="h0 uppercase">
+      <h1 className="h0 uppercase max-w-full">
         {isFrench ? (
           <span ref={mobileTitleRef} className="block md:hidden">
-            <span>Conception de </span>
-            <span className="text-[#ed356d]">sites web </span>
-            <span className="text-[#ed356d]">uniques </span>
+            <span className="text-[#ed356d]">Freelancer Studio </span>
+            <span>est une entreprise </span>
+            <span className="text-[#ed356d]">créative de marketing numérique </span>
+            <span>qui conçoit des expériences </span>
+            <span className="text-[#ed356d]">interactives, performantes </span>
+            <span>et à </span>
+            <span className="text-[#ed356d]">fort impact. </span>
+            <span>En nous concentrant méticuleusement sur </span>
+            <span className="text-[#ed356d]">l'esthétique </span>
             <span>et </span>
-            <span className="text-[#ed356d]">immersifs </span>
-            <span>pour les entreprises avant-gardistes</span>
+            <span className="text-[#ed356d]">l'accessibilité, </span>
+            <span>nous créons des interfaces et des campagnes </span>
+            <span className="text-[#ed356d]">fluides et innovantes </span>
+            <span>conçues pour </span>
+            <span className="text-[#ed356d]">élever votre marque.</span>
           </span>
         ) : (
           <span ref={mobileTitleRef} className="block md:hidden">
-            <span>Designing </span>
-            <span className="text-[#ed356d]">unique </span>
+            <span className="text-[#ed356d]">Freelancer Studio </span>
+            <span>is a </span>
+            <span className="text-[#ed356d]">creative digital marketing </span>
+            <span>company that designs </span>
+            <span className="text-[#ed356d]">interactive, high-performance, </span>
             <span>and </span>
-            <span className="text-[#ed356d]">immersive </span>
-            <span>websites for </span>
-            <span className="text-[#ed356d]">forward-thinking </span>
-            <span>company</span>
+            <span className="text-[#ed356d]">high-impact </span>
+            <span>experiences. By meticulously focusing on </span>
+            <span className="text-[#ed356d]">aesthetics </span>
+            <span>and </span>
+            <span className="text-[#ed356d]">accessibility, </span>
+            <span>we craft </span>
+            <span className="text-[#ed356d]">fluid and innovative </span>
+            <span>interfaces and campaigns designed to </span>
+            <span className="text-[#ed356d]">elevate your brand.</span>
           </span>
         )}
         {isFrench ? (
-          <span className="hidden md:block">
-            <div className="relative">
+          <span className="hidden md:block max-w-full overflow-visible">
+            <div className="relative overflow-visible w-full px-4 md:px-8 lg:px-12">
               <IconCross className="absolute -top-10 -right-10 hidden md:block" color="#ed356d" />
-              <span ref={desktopSpan1Ref} className="relative block text-left whitespace-nowrap">
-                <span>
-                  <span>Conception de </span>
-                  <span className="text-[#ed356d]">sites web</span>
+              <span ref={desktopSpan1Ref} className="relative block text-left break-words">
+                <span className="inline-block">
+                  <span className="text-[#ed356d]">Freelancer Studio </span>
+                  <span>est une entreprise </span>
+                  <span className="text-[#ed356d]">créative</span>
                 </span>
               </span>
             </div>
-            <div className="relative">
+            <div className="relative overflow-visible w-full px-4 md:px-8 lg:px-12">
               <IconCross
                 className="absolute top-1/2 -left-10 hidden -translate-y-1/2 md:block"
                 color="#ed356d"
               />
-              <span ref={desktopSpan2Ref} className="relative block text-right whitespace-nowrap">
-                <span>
-                  <span className="text-[#ed356d]">uniques </span>
-                  <span>et </span>
-                  <span className="text-[#ed356d]">immersifs</span>
+              <span ref={desktopSpan2Ref} className="relative block text-right break-words">
+                <span className="inline-block">
+                  <span className="text-[#ed356d]">de marketing numérique </span>
+                  <span>qui conçoit des expériences </span>
                 </span>
               </span>
             </div>
-            <div className="relative">
-              <span ref={desktopSpan3Ref} className="relative block text-left whitespace-nowrap">
-                <span>pour les entreprises</span>
+            <div className="relative overflow-visible w-full px-4 md:px-8 lg:px-12">
+              <span ref={desktopSpan3Ref} className="relative block text-left break-words">
+                <span className="inline-block">
+                  <span className="text-[#ed356d]">interactives, performantes </span>
+                  <span>et à </span>
+                  <span className="text-[#ed356d]">fort impact.</span>
+                </span>
               </span>
             </div>
-            <div className="relative">
+            <div className="relative overflow-visible w-full px-4 md:px-8 lg:px-12">
               <IconCross
                 className="absolute -right-10 -bottom-10 hidden md:block"
                 color="#ed356d"
               />
-              <span ref={desktopSpan4Ref} className="relative block text-center whitespace-nowrap">
-                <span className="text-[#ed356d]">avant-gardistes</span>
+              <span ref={desktopSpan4Ref} className="relative block text-center break-words">
+                <span className="inline-block">
+                  <span>Nous créons des interfaces </span>
+                  <span className="text-[#ed356d]">innovantes </span>
+                  <span>pour </span>
+                  <span className="text-[#ed356d]">élever votre marque.</span>
+                </span>
               </span>
             </div>
           </span>
         ) : (
-          <span className="hidden md:block">
-            <div className="relative">
+          <span className="hidden md:block max-w-full overflow-visible">
+            <div className="relative overflow-visible w-full px-4 md:px-8 lg:px-12">
               <IconCross className="absolute -top-10 -right-10 hidden md:block" color="#ed356d" />
-              <span ref={desktopSpan1Ref} className="relative block text-left whitespace-nowrap">
-                <span>
-                  <span>Designing </span>
-                  <span className="text-[#ed356d]">unique </span>
-                  <span>and </span>
+              <span ref={desktopSpan1Ref} className="relative block text-left break-words">
+                <span className="inline-block">
+                  <span className="text-[#ed356d]">Freelancer Studio </span>
+                  <span>is a </span>
+                  <span className="text-[#ed356d]">creative</span>
                 </span>
               </span>
             </div>
-            <div className="relative">
+            <div className="relative overflow-visible w-full px-4 md:px-8 lg:px-12">
               <IconCross
                 className="absolute top-1/2 -left-10 hidden -translate-y-1/2 md:block"
                 color="#ed356d"
               />
-              <span ref={desktopSpan2Ref} className="relative block text-right whitespace-nowrap">
-                <span>
-                  <span className="text-[#ed356d]">immersive </span>
-                  <span>websites</span>
+              <span ref={desktopSpan2Ref} className="relative block text-right break-words">
+                <span className="inline-block">
+                  <span className="text-[#ed356d]">digital marketing </span>
+                  <span>company that designs </span>
                 </span>
               </span>
             </div>
-            <div className="relative">
+            <div className="relative overflow-visible w-full px-4 md:px-8 lg:px-12">
+              <span ref={desktopSpan3Ref} className="relative block text-left break-words">
+                <span className="inline-block">
+                  <span className="text-[#ed356d]">interactive, high-performance, </span>
+                  <span>and </span>
+                  <span className="text-[#ed356d]">high-impact </span>
+                  <span>experiences.</span>
+                </span>
+              </span>
+            </div>
+            <div className="relative overflow-visible w-full px-4 md:px-8 lg:px-12">
               <IconCross
                 className="absolute -right-10 -bottom-10 hidden md:block"
                 color="#ed356d"
               />
-              <span ref={desktopSpan3Ref} className="relative block text-left whitespace-nowrap">
-                <span>
-                  <span>for </span>
-                  <span className="text-[#ed356d]">forward-thinking </span>
+              <span ref={desktopSpan4Ref} className="relative block text-center break-words">
+                <span className="inline-block">
+                  <span>We craft </span>
+                  <span className="text-[#ed356d]">fluid and innovative </span>
+                  <span>interfaces to </span>
+                  <span className="text-[#ed356d]">elevate your brand.</span>
                 </span>
-              </span>
-            </div>
-            <div className="relative">
-              <span ref={desktopSpan4Ref} className="relative block text-center whitespace-nowrap">
-                <span>company</span>
               </span>
             </div>
           </span>

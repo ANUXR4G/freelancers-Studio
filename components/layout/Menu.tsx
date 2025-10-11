@@ -19,10 +19,7 @@ import Tag, { AnimatedTagRef } from '../ui/Tag';
 import CutoutWrapper, { AnimatedCutoutWrapperRef } from './CutoutWrapper';
 import logo from '@/public/logo-full.png';
 
-
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
-
 
 const TEXT_BUTTON = {
   fr: {
@@ -35,18 +32,15 @@ const TEXT_BUTTON = {
   },
 };
 
-
 const Menu = ({ projects }: { projects: ProjectType[] }) => {
   const SLICED_PROJECTS = projects.slice(0, 6);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
 
   const floatingNavRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef(null);
   const soundRef = useRef(null);
   const headerRef = useRef<HTMLElement>(null);
-  const headerInnerRef = useRef<HTMLDivElement>(null);
-  const menuRef = useRef(null);
+  const menuRef = useRef<HTMLDivElement>(null);
   const wrapperButtonRef = useRef(null);
   const contactMenuRef = useRef(null);
   const buttonMenuRef = useRef(null);
@@ -58,20 +52,15 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
   const socialsRef = useRef<HTMLUListElement>(null);
   const infosRef = useRef<HTMLDivElement>(null);
 
-
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
-
 
   const { isFrench, getInternalPath } = useLanguage();
   const { contextSafe } = useGSAP();
-
 
   const revealAnimation = contextSafe(() => {
     if (!logoRef.current || !soundRef.current || !contactMenuRef.current || !buttonMenuRef.current)
       return;
 
-
-    // Clear any existing animations
     gsap.killTweensOf([
       logoRef.current,
       soundRef.current,
@@ -79,65 +68,42 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       buttonMenuRef.current,
     ]);
 
+    const tl = gsap.timeline({ delay: 1.2 });
 
-    // Create timeline for reveal
-    const tl = gsap.timeline({
-      delay: 1.2,
-    });
-
-
-    // Logo from left
     tl.fromTo(
       logoRef.current,
-      {
-        x: -200,
-        opacity: 0,
-      },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: 'power4.out',
-      },
+      { x: -200, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1.2, ease: 'power4.out' },
     );
 
-
-    // Buttons from right with stagger
     tl.fromTo(
       [soundRef.current, contactMenuRef.current, buttonMenuRef.current],
-      {
-        x: 200,
-        opacity: 0,
-      },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        ease: 'power4.out',
-        stagger: 0.1,
-      },
-      '-=0.9', // Overlap with logo
+      { x: 200, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1, ease: 'power4.out', stagger: 0.1 },
+      '-=0.9',
     );
   });
 
-
   const floatingNavAnimation = contextSafe(() => {
-    if (!floatingNavRef.current || !logoRef.current || !wrapperButtonRef.current) return;
-
+    if (!floatingNavRef.current || !logoRef.current) return;
 
     ScrollTrigger.create({
       trigger: 'body',
       start: 'top+=100 top',
       end: '+=1',
       onEnter: () => {
+        // Scroll DOWN - animate to floating center state
         gsap.to(floatingNavRef.current, {
           position: 'fixed',
           left: '50%',
           x: '-50%',
-          top: 20,
+          top: '20px',
           width: 'auto',
           maxWidth: '90vw',
-          padding: '10px 24px',
+          paddingLeft: '24px',
+          paddingRight: '24px',
+          paddingTop: '10px',
+          paddingBottom: '10px',
           backgroundColor: 'rgba(255, 255, 255, 0.1)',
           backdropFilter: 'blur(20px)',
           borderRadius: '3rem',
@@ -145,26 +111,29 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
           border: '1px solid rgba(255, 255, 255, 0.2)',
           justifyContent: 'center',
           gap: '1.5rem',
-          duration: 0.7,
-          ease: 'power2.inOut',
+          duration: 0.6,
+          ease: 'power3.inOut',
         });
-
 
         gsap.to(logoRef.current, {
           scale: 0.8,
-          duration: 0.7,
-          ease: 'power2.inOut',
+          duration: 0.6,
+          ease: 'power3.inOut',
         });
       },
       onLeaveBack: () => {
+        // Scroll UP - animate back to normal state (SAME smooth animation)
         gsap.to(floatingNavRef.current, {
           position: 'relative',
           left: 'auto',
-          x: 0,
-          top: 0,
+          x: '0px',
+          top: '0px',
           width: '100%',
           maxWidth: 'none',
-          padding: '0px',
+          paddingLeft: '0px',
+          paddingRight: '0px',
+          paddingTop: '0px',
+          paddingBottom: '0px',
           backgroundColor: 'transparent',
           backdropFilter: 'blur(0px)',
           borderRadius: '0px',
@@ -172,20 +141,18 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
           border: 'none',
           justifyContent: 'space-between',
           gap: '0rem',
-          duration: 0.7,
-          ease: 'power2.inOut',
+          duration: 0.6,
+          ease: 'power3.inOut',
         });
-
 
         gsap.to(logoRef.current, {
           scale: 1,
-          duration: 0.7,
-          ease: 'power2.inOut',
+          duration: 0.6,
+          ease: 'power3.inOut',
         });
       },
     });
   });
-
 
   const openMenu = contextSafe(() => {
     if (
@@ -193,16 +160,14 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       !linksRef.current ||
       !socialsRef.current ||
       !headerRef.current ||
-      !infosRef.current
+      !infosRef.current ||
+      !menuRef.current
     )
       return;
 
-
-    // Kill any existing timeline
     if (timelineRef.current) {
       timelineRef.current.kill();
     }
-
 
     timelineRef.current = gsap
       .timeline()
@@ -223,7 +188,9 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       .set(infosRef.current.children, {
         y: 40,
       })
-      .set(menuRef.current, { opacity: 1 })
+      .set(menuRef.current, { 
+        opacity: 1,
+      })
       .addLabel('hide-button')
       .to(
         wrapperButtonRef.current,
@@ -233,15 +200,20 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       .addLabel('show-mask')
       .to(
         menuRef.current,
-        { backdropFilter: 'blur(10px)', backgroundColor: COLORS.MENU, duration: 0.8 },
+        { 
+          backdropFilter: 'blur(10px)', 
+          backgroundColor: COLORS.MENU,
+          duration: 0.8 
+        },
         'show-mask',
       )
       .add(() => cutoutRef.current?.openCutoutWrapper(), 'show-mask')
       .to(
         headerRef.current,
         {
-          top: 32,
-          paddingBlock: gsap.utils.clamp(20, 8 * window.innerHeight * 0.01, 100),
+          top: '32px',
+          paddingTop: gsap.utils.clamp(20, 8 * window.innerHeight * 0.01, 100) + 'px',
+          paddingBottom: gsap.utils.clamp(20, 8 * window.innerHeight * 0.01, 100) + 'px',
           duration: 0.8,
           ease: 'power2.inOut',
         },
@@ -250,8 +222,10 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       .to(
         headerRef.current.children,
         {
-          paddingInline: gsap.utils.clamp(20, 8 * window.innerWidth * 0.01, 100),
-          paddingBlock: 0,
+          paddingLeft: gsap.utils.clamp(20, 8 * window.innerWidth * 0.01, 100) + 'px',
+          paddingRight: gsap.utils.clamp(20, 8 * window.innerWidth * 0.01, 100) + 'px',
+          paddingTop: '0px',
+          paddingBottom: '0px',
           duration: 0.8,
           ease: 'power2.inOut',
         },
@@ -316,23 +290,20 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       );
   });
 
-
   const closeMenu = contextSafe(() => {
     if (
       !cutoutRef.current ||
       !linksRef.current ||
       !headerRef.current ||
       !socialsRef.current ||
-      !infosRef.current
+      !infosRef.current ||
+      !menuRef.current
     )
       return;
 
-
-    // Kill any existing timeline
     if (timelineRef.current) {
       timelineRef.current.kill();
     }
-
 
     timelineRef.current = gsap
       .timeline()
@@ -394,8 +365,10 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       .to(
         headerRef.current.children,
         {
-          paddingInline: 0,
-          paddingBlock: 32,
+          paddingLeft: '0px',
+          paddingRight: '0px',
+          paddingTop: '32px',
+          paddingBottom: '32px',
           duration: 0.8,
           ease: 'power2.inOut',
         },
@@ -404,8 +377,9 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       .to(
         headerRef.current,
         {
-          top: 0,
-          paddingBlock: 0,
+          top: '0px',
+          paddingTop: '0px',
+          paddingBottom: '0px',
           duration: 0.8,
           ease: 'power2.inOut',
         },
@@ -430,24 +404,19 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       });
   });
 
-
   useShortcut('Escape', () => isMenuOpen && closeMenu());
-
 
   useGSAP(() => {
     revealAnimation();
     floatingNavAnimation();
 
-
     return () => {
-      // Cleanup
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       if (timelineRef.current) {
         timelineRef.current.kill();
       }
     };
   }, []);
-
 
   return (
     <>
@@ -504,7 +473,7 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
       <CutoutWrapper ref={cutoutRef}>
         <div
           ref={menuRef}
-          className="flex h-full w-full flex-col justify-between gap-8 border border-white/10 bg-[#ed356d]/0 bg-white/5 px-8 py-8 backdrop-blur-xl md:gap-12 md:px-16 md:py-16 lg:px-24 lg:py-24"
+          className="flex h-full w-full flex-col justify-between border border-white/10 bg-[#ed356d]/0 bg-white/5 backdrop-blur-xl !p-8 md:!p-16 lg:!p-24"
         >
           <div />
           <div className="grid grid-cols-10 gap-5">
@@ -609,6 +578,5 @@ const Menu = ({ projects }: { projects: ProjectType[] }) => {
     </>
   );
 };
-
 
 export default Menu;

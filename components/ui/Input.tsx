@@ -245,7 +245,6 @@ const Input = forwardRef<AnimatedInputRef, InputProps>(
           <div
             ref={lineRef}
             className={clsx(
-              'absolute bottom-0 left-0 h-px w-full origin-left',
               isDark ? 'bg-black' : 'bg-white',
               animate && 'scale-x-0',
             )}
@@ -253,21 +252,18 @@ const Input = forwardRef<AnimatedInputRef, InputProps>(
           <div
             ref={errorLineRef}
             className={clsx(
-              'absolute bottom-0 left-0 h-px w-full origin-right bg-red-500',
               animate && 'scale-x-0',
             )}
           />
           <div
             ref={successLineRef}
             className={clsx(
-              'absolute bottom-0 left-0 h-px w-full origin-right bg-green-500',
               animate && 'scale-x-0',
             )}
           />
           <div
             ref={loaderLineRef}
             className={clsx(
-              'bg-blue absolute bottom-0 left-0 h-px w-full origin-left scale-x-0',
               animate && 'scale-x-0',
             )}
           />

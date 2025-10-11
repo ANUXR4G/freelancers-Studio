@@ -27,12 +27,12 @@ export const LINKS = [
 
 export const SOCIALS = [
   {
-    href: 'https://bento.me/Freelancersstudio-studio',
-    text: 'Bento',
+    href: 'https://www.behance.net/freelancerstudios',
+    text: 'Behance',
   },
   {
-    href: 'https://awwwards.com/Freelancersstudio-studio/',
-    text: 'Awwwards',
+    href: 'https://www.facebook.com/profile.php?id=61581456906772/',
+    text: 'Facebook',
   },
   {
     href: 'https://instagram.com/Freelancersstudio.studio',
